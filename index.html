@@ -420,24 +420,20 @@
       background-color:var(--bg);
       position:relative;
       z-index:1;
-      --bg-scroll-offset:0px;
+      --bg-base-offset:-5vh;
+      --bg-offset:0px;
     }
     .bg-band::before{
       content:"";
       position:absolute;
       inset:0;
-      background:url('assets/background1.png') center calc(12vh + var(--bg-scroll-offset)) / cover no-repeat;
+      background:url('assets/background1.png') center calc(var(--bg-base-offset) + var(--bg-offset)) / cover no-repeat;
       opacity:0;
-      transform:translateY(32px);
-      transition:opacity 1.8s cubic-bezier(.4,0,.2,1), transform 1.8s cubic-bezier(.22,1,.36,1), background-position 2.2s cubic-bezier(.22,1,.36,1);
+      transition:opacity 1.2s cubic-bezier(.4,0,.2,1);
       z-index:-1;
-      will-change:opacity, transform, background-position;
+      will-change:opacity;
     }
-    .bg-band.is-ready::before{
-      opacity:1;
-      transform:translateY(0);
-      background-position:center calc(-8vh + var(--bg-scroll-offset));
-    }
+    .bg-band.is-ready::before{opacity:1;}
 
     .hero {
       padding: 80px 0 40px;
@@ -490,6 +486,15 @@
       gap:12px;
       min-height:224px;
     }
+    .contact-card-row{
+      justify-content:start;
+    }
+    .contact-card{
+      width:clamp(320px, 60vw, 760px);
+      max-width:100%;
+      box-shadow:none;
+      margin:0;
+    }
     #services .card h3 {
       text-align: center;
     }
@@ -498,8 +503,6 @@
     }
     .card h3{margin:8px 0 6px}
     .muted{color:var(--muted)}
-
-    .panel{background:linear-gradient(180deg, rgba(167,217,161,.07), rgba(217,184,143,.06)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:26px;}
 
     .cta{
       display: flex;
@@ -618,7 +621,7 @@
             The only<br />
             safe way<br />
             — is the<br />
-            brave way.
+            brave way
           </h1>
           <p>
             We help small businesses build<br />
@@ -641,9 +644,9 @@
     <section id="services" class="reveal" aria-labelledby="services-title">
       <h2 id="services-title" class="sr-only">Services</h2>
       <div class="grid grid-3">
-        <article class="card"><h3>Ideation</h3><p class="muted">Strategic positioning, tone of voice, and creative direction rooted in the real world.</p></article>
-        <article class="card"><h3>Design</h3><p class="muted">Packaging and brand assets that embody your philosophy with clarity and punch.</p></article>
-        <article class="card"><h3>Omni-Channel</h3><p class="muted">Visual systems that amplify your brand across every platform and touchpoint.</p></article>
+        <article class="card"><h3>Intention</h3><p class="muted">Strategic positioning, tone of voice, and creative direction rooted in the real world.</p></article>
+        <article class="card"><h3>Creation</h3><p class="muted">Packaging and brand assets that embody your philosophy with clarity and punch.</p></article>
+        <article class="card"><h3>Application</h3><p class="muted">Visual systems that amplify your brand across every platform and touchpoint.</p></article>
       </div>
     </section>
 
@@ -687,12 +690,11 @@
 
     <section id="contact" class="reveal" aria-labelledby="contact-title">
       <div class="wrap">
-  <h2 id="contact-title">Contact the Bones</h2>
-        <div class="grid">
-          <div class="card">
+  <h2 id="contact-title">Talk to the Bones</h2>
+        <div class="grid contact-card-row">
+          <div class="card contact-card">
             <p class="muted">Tell us what you’re building. Two or three sentences is perfect.</p>
             <p><a class="btn" href="mailto:hello@rarebonesstudio.com?subject=Project%20enquiry%20from%20website">Email hello@rarebonesstudio.com</a></p>
-            <p class="muted">Prefer a form? Wire one in here later using your host’s form handler.</p>
           </div>
         </div>
       </div>
@@ -835,8 +837,8 @@
       const updateBand = () => {
         bandTicking = false;
         const y = window.scrollY || 0;
-        const offset = Math.round(-y * 0.4);
-        band.style.setProperty('--bg-scroll-offset', `${offset}px`);
+        const offset = Math.round(-y * 0.6);
+        band.style.setProperty('--bg-offset', `${offset}px`);
       };
       const requestBandUpdate = () => {
         if (!bandTicking) {
