@@ -413,7 +413,27 @@
     .btn-primary{ background: var(--accent); color:#0f1611; border:1px solid var(--accent); font-weight:700 }
     .btn-primary:hover{ background:#9fdbc1; border-color:#9fdbc1 }
 
-    .bg-band{width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); background:url('assets/background1.png') center center / cover no-repeat; background-color:var(--bg); position:relative; z-index:1;} 
+    .bg-band{
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      background-color:var(--bg);
+      position:relative;
+      z-index:1;
+      --bg-offset:0px;
+    }
+    .bg-band::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url('assets/background1.png') center calc(var(--bg-offset)) / cover no-repeat;
+      opacity:0;
+      transform:translateY(36px);
+      transition:opacity 1.8s cubic-bezier(.4,0,.2,1), transform 2.4s cubic-bezier(.22,1,.36,1);
+      z-index:-1;
+      will-change:opacity, transform;
+    }
+    .bg-band.is-ready::before{opacity:1; transform:translateY(0);}
 
     .hero {
       padding: 80px 0 40px;
@@ -804,11 +824,14 @@
     // ===== HERO PARALLAX =====
     const band = document.querySelector('.bg-band');
     if (band) {
+      window.requestAnimationFrame(() => band.classList.add('is-ready'));
+
       let bandTicking = false;
       const updateBand = () => {
         bandTicking = false;
         const y = window.scrollY || 0;
-        band.style.backgroundPosition = `center ${Math.round(-y * 0.7)}px`;
+        const offset = Math.round(-y * 0.6);
+        band.style.setProperty('--bg-offset', `${offset}px`);
       };
       const requestBandUpdate = () => {
         if (!bandTicking) {
