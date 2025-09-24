@@ -173,6 +173,7 @@
       flex-direction: column;
       gap: 12px;
       z-index: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
     .hero-copy-wrap::before {
       content: "";
@@ -495,6 +496,7 @@
       .wrap{padding:18px}
       /* Type tuning for small screens */
       .hero-copy-wrap::before{opacity:1}
+      .hero-copy-wrap.is-hidden{opacity:0; transform:translateY(20px)}
       .hero h1{font-size:clamp(28px, 9.5vw, 44px); line-height:1.08; letter-spacing:-0.02em}
       .hero p{font-size:clamp(14px,4.2vw,18px); max-width:40ch}
       .btn{padding:10px 14px; font-size:0.95rem}
@@ -839,6 +841,22 @@
     }
 
     // ===== COPY EMAIL + TOAST =====
+    const heroCopyWrap = document.querySelector('.hero-copy-wrap');
+    const shouldHideHeroCopy = window.innerWidth <= 640;
+    if (heroCopyWrap && shouldHideHeroCopy) {
+      heroCopyWrap.classList.add('is-hidden');
+      const revealHeroCopy = () => {
+        heroCopyWrap.classList.remove('is-hidden');
+        window.removeEventListener('scroll', onScrollReveal, { passive: true });
+      };
+      const onScrollReveal = () => {
+        if (window.scrollY > 24) {
+          revealHeroCopy();
+        }
+      };
+      window.addEventListener('scroll', onScrollReveal, { passive: true });
+    }
+
     const showToast = (msg) => {
       let toast = document.getElementById('toast');
       if (!toast) {
