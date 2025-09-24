@@ -420,20 +420,24 @@
       background-color:var(--bg);
       position:relative;
       z-index:1;
-      --bg-offset:0px;
+      --bg-scroll-offset:0px;
     }
     .bg-band::before{
       content:"";
       position:absolute;
       inset:0;
-      background:url('assets/background1.png') center calc(var(--bg-offset)) / cover no-repeat;
+      background:url('assets/background1.png') center calc(12vh + var(--bg-scroll-offset)) / cover no-repeat;
       opacity:0;
-      transform:translateY(36px);
-      transition:opacity 1.8s cubic-bezier(.4,0,.2,1), transform 2.4s cubic-bezier(.22,1,.36,1);
+      transform:translateY(32px);
+      transition:opacity 1.8s cubic-bezier(.4,0,.2,1), transform 1.8s cubic-bezier(.22,1,.36,1), background-position 2.2s cubic-bezier(.22,1,.36,1);
       z-index:-1;
-      will-change:opacity, transform;
+      will-change:opacity, transform, background-position;
     }
-    .bg-band.is-ready::before{opacity:1; transform:translateY(0);}
+    .bg-band.is-ready::before{
+      opacity:1;
+      transform:translateY(0);
+      background-position:center calc(-8vh + var(--bg-scroll-offset));
+    }
 
     .hero {
       padding: 80px 0 40px;
@@ -512,7 +516,7 @@
     .reveal.show{opacity:1; transform:none}
     body.no-js .reveal{opacity:1; transform:none}
 
-    @media (max-width: 520px){
+    @media (max-width: 640px){
   .logo img{display:none}
   .logo-type{display:block !important; font-size:clamp(18px,6vw,22px)}
       .nav{min-height:64px}
@@ -520,6 +524,7 @@
       /* Type tuning for small screens */
       .hero-copy-wrap::before{opacity:1}
       .hero-copy-wrap.is-hidden{opacity:0; transform:translateY(20px)}
+      body.no-js .hero-copy-wrap.is-hidden{opacity:1; transform:none}
       .hero h1{font-size:clamp(28px, 9.5vw, 44px); line-height:1.08; letter-spacing:-0.02em}
       .hero p{font-size:clamp(14px,4.2vw,18px); max-width:40ch}
       .btn{padding:10px 14px; font-size:0.95rem}
@@ -608,7 +613,7 @@
     <section class="wrap hero">
       <!-- HERO MAIN CONTENT (headline and description) -->
       <div class="hero-content-up" style="width: 100%;">
-        <div class="hero-copy-wrap">
+        <div class="hero-copy-wrap is-hidden">
           <h1>
             The only<br />
             safe way<br />
@@ -830,8 +835,8 @@
       const updateBand = () => {
         bandTicking = false;
         const y = window.scrollY || 0;
-        const offset = Math.round(-y * 0.6);
-        band.style.setProperty('--bg-offset', `${offset}px`);
+        const offset = Math.round(-y * 0.4);
+        band.style.setProperty('--bg-scroll-offset', `${offset}px`);
       };
       const requestBandUpdate = () => {
         if (!bandTicking) {
@@ -868,19 +873,22 @@
 
     // ===== COPY EMAIL + TOAST =====
     const heroCopyWrap = document.querySelector('.hero-copy-wrap');
-    const shouldHideHeroCopy = window.innerWidth <= 640;
-    if (heroCopyWrap && shouldHideHeroCopy) {
-      heroCopyWrap.classList.add('is-hidden');
-      const revealHeroCopy = () => {
+    if (heroCopyWrap) {
+      const shouldHideHeroCopy = window.innerWidth <= 640;
+      if (shouldHideHeroCopy) {
+        const revealHeroCopy = () => {
+          heroCopyWrap.classList.remove('is-hidden');
+          window.removeEventListener('scroll', onScrollReveal, { passive: true });
+        };
+        const onScrollReveal = () => {
+          if (window.scrollY > 24) {
+            revealHeroCopy();
+          }
+        };
+        window.addEventListener('scroll', onScrollReveal, { passive: true });
+      } else {
         heroCopyWrap.classList.remove('is-hidden');
-        window.removeEventListener('scroll', onScrollReveal, { passive: true });
-      };
-      const onScrollReveal = () => {
-        if (window.scrollY > 24) {
-          revealHeroCopy();
-        }
-      };
-      window.addEventListener('scroll', onScrollReveal, { passive: true });
+      }
     }
 
     const showToast = (msg) => {
