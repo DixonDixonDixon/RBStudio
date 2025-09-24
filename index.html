@@ -54,6 +54,7 @@
   border-radius: 50%;
   overflow: hidden;
   background: #222;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,10 +62,25 @@
   transition: height 0.3s, width 0.3s;
     }
     .about-profile-pic img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  z-index: 1;
+    }
+    .about-profile-pic img:first-child { opacity: 1; z-index: 2; }
+    .about-profile-pic img:last-child { opacity: 0; z-index: 1; }
+    .about-profile-pic:hover img:first-child,
+    .about-profile-pic:focus-within img:first-child {
+      opacity: 0;
+    }
+    .about-profile-pic:hover img:last-child,
+    .about-profile-pic:focus-within img:last-child {
+      opacity: 1;
     }
     #about-title, #contact-title {
       font-family: 'Cambo', serif;
@@ -389,12 +405,19 @@
       line-height:1.05;
       margin:18px 0;
       text-shadow:
-        0 4px 32px #18351e99,
-        0 0 12px #18351e66;
+        0 2px 12px rgba(38, 48, 31, 1),   /* tight halo */
+        0 0 32px rgba(56, 72, 46, 1);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
-    .hero p{max-width:880px; color:var(--muted); font-size:clamp(16px,2.2vw,20px)}
+    .hero p{
+      max-width:880px;
+      color:var(--muted);
+      font-size:clamp(16px,2.2vw,20px);
+      text-shadow:
+         0 1px 8px rgba(38, 48, 31, 1),
+         0 0 20px rgba(56, 72, 46, 1);
+    }
     .chip{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:8px 12px; color:var(--muted); font-size:14px}
 
     #services{padding:0; width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); max-width:none}  
@@ -604,6 +627,7 @@
     We’re here to help you build the kind of brand that lasts — with structure, intent, and just enough bite to stand out.</p>
     <div class="about-profile-pic" id="about-profile-pic">
       <img src="assets/Dickson_Profile.png" alt="Dickson profile" />
+      <img src="assets/Dickson_Profile2.png" alt="Dickson profile alternate" />
     </div>
   </div>
     </section>
@@ -614,7 +638,7 @@
         <div class="grid">
           <div class="card">
             <p class="muted">Tell us what you’re building. Two or three sentences is perfect.</p>
-            <p><a class="btn" href="mailto:hello@rarebones.studio?subject=Project%20enquiry%20from%20website">Email hello@rarebones.studio</a></p>
+            <p><a class="btn" href="mailto:hello@rarebonesstudio.com?subject=Project%20enquiry%20from%20website">Email hello@rarebonesstudio.com</a></p>
             <p class="muted">Prefer a form? Wire one in here later using your host’s form handler.</p>
           </div>
         </div>
@@ -803,12 +827,12 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 1800);
     };
-    const emailLink = document.querySelector('a[href^="mailto:hello@rarebones.studio"]');
+    const emailLink = document.querySelector('a[href^="mailto:hello@rarebonesstudio.com"]');
     if (emailLink) {
       emailLink.addEventListener('click', async (event) => {
         try {
           event.preventDefault();
-          await navigator.clipboard.writeText('hello@rarebones.studio');
+          await navigator.clipboard.writeText('hello@rarebonesstudio.com');
           showToast('Email copied');
         } catch (error) {
           window.location.href = emailLink.href;
