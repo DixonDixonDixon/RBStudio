@@ -54,6 +54,16 @@
   const panel = document.getElementById('sidepanel');
   const overlay = document.getElementById('overlay');
 
+  if (panel?.hasAttribute('data-init-hidden')) {
+    requestAnimationFrame(() => {
+      panel.style.removeProperty('transform');
+      if (!panel.getAttribute('style')) {
+        panel.removeAttribute('style');
+      }
+      panel.removeAttribute('data-init-hidden');
+    });
+  }
+
   const openMenu = () => {
     if (!panel) return;
     panel.classList.add('open');
