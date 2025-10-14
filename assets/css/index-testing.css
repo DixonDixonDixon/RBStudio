@@ -1,3 +1,8 @@
+    /* Global paragraph balancing */
+    p {
+      text-wrap: balance;
+    }
+
     /* About section paragraph width */
     .about-flex-row p.muted {
       width: clamp(28ch, 30vw, 60ch);
@@ -101,7 +106,7 @@
       background-size: 150% auto;
       background-position: center;
       background-repeat: no-repeat;
-      transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+      transition: background-position 0.35s ease, transform 0.4s cubic-bezier(.4,0,.2,1);
     }
     #work .card:nth-child(1) { background-image: url("../work1_thumb.png"); }
     #work .card:nth-child(2) { background-image: url("../work2_thumb.png"); }
@@ -143,6 +148,10 @@
     #work .grid > a.card:hover::after,
     #work .grid > a.card:focus-visible::after {
       opacity: 1;
+    }
+    #work .grid > a.card:hover,
+    #work .grid > a.card:focus-visible {
+      background-position: center 54%;
     }
     /* Hero CTA button area */
     .cta {
