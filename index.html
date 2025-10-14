@@ -34,7 +34,7 @@
 
 
   <div class="overlay" id="overlay" hidden></div>
-  <aside class="sidepanel" id="sidepanel" aria-hidden="true">
+  <aside class="sidepanel" id="sidepanel" aria-hidden="true" data-init-hidden style="transform: translateX(100%);">
     <header>
       <button class="close-btn" id="closeBtn" aria-label="Close menu"></button>
     </header>
@@ -89,30 +89,21 @@
       </div>
     </section>
 
-    <!-- Duplicated Service section as Work section -->
     <section id="work" class="reveal" aria-labelledby="work-title">
       <h2 id="work-title" class="sr-only">Work</h2>
-        <div class="grid">
-          <article class="card">
-            <h3 class="sr-only">Aurora Kombucha visual identity</h3>
-            <p class="sr-only">Brand strategy, packaging, and launch campaign.</p>
-          </article>
-          <article class="card">
-            <h3 class="sr-only">Northbound Outfitters eCommerce</h3>
-            <p class="sr-only">Responsive storefront, user flows, and art direction.</p>
-          </article>
-          <article class="card">
-            <h3 class="sr-only">Fieldnote Architects positioning</h3>
-            <p class="sr-only">Messaging architecture, tone of voice, and collateral.</p>
-          </article>
-          <article class="card">
-            <h3 class="sr-only">Cinder Coffee at-home experience</h3>
-            <p class="sr-only">Subscription packaging, inserts, and social teasers.</p>
-          </article>
-        </div>
+      <div class="grid work-grid">
+        <a class="card" href="peteshead/index.html">
+          <span class="sr-only">Pete's Head portfolio — view project</span>
+        </a>
+        <a class="card" href="opalina/index.html">
+          <span class="sr-only">Opalina portfolio — view project</span>
+        </a>
+        <article class="card" aria-hidden="true"></article>
+        <a class="card" href="tres/index.html">
+          <span class="sr-only">Tres portfolio — view project</span>
+        </a>
+      </div>
     </section>
-
-  <section id="selected-work" class="wrap reveal" aria-labelledby="work-title"></section>
 
     <section id="about" class="wrap reveal" aria-labelledby="about-title">
   <h2 id="about-title">About the Bones</h2>
