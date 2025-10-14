@@ -170,31 +170,6 @@
     }
   }
 
-  // ===== WORK CARD PARALLAX =====
-  if (!prefersReducedMotion.matches) {
-    const workCards = document.querySelectorAll('#work .card');
-    if (workCards.length) {
-      let ticking = false;
-      const updateCards = () => {
-        ticking = false;
-        const viewportHeight = window.innerHeight;
-        workCards.forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const offset = ((rect.top + rect.height / 2) - viewportHeight / 2) / viewportHeight;
-          card.style.backgroundPosition = `center ${50 + offset * 20}%`;
-        });
-      };
-      const requestUpdate = () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(updateCards);
-        }
-      };
-      requestUpdate();
-      window.addEventListener('scroll', requestUpdate, { passive: true });
-    }
-  }
-
   // ===== COPY EMAIL + TOAST =====
   const heroCopyWrap = document.querySelector('.hero-copy-wrap');
   if (heroCopyWrap) {
