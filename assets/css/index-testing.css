@@ -274,9 +274,6 @@
     .logo:active img {
       filter: brightness(0) saturate(100%) invert(66%) sepia(92%) saturate(638%) hue-rotate(8deg) brightness(102%) contrast(101%);
     }
-    .logo:active img {
-      transform: rotate(360deg);
-    }
   .logo-type{display:none !important; font-weight:700; letter-spacing:.4px}
 
     .hamburger {
