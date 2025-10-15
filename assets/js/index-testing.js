@@ -133,6 +133,45 @@
     });
   }
 
+  // ===== PAGE FADE TRANSITION =====
+  const galleryLinks = document.querySelectorAll('#work .card[href]');
+  if (galleryLinks.length && !prefersReducedMotion.matches) {
+    const fadeDuration = 220;
+    galleryLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0 ||
+          link.target === '_blank'
+        ) {
+          return;
+        }
+
+        const href = link.href;
+        if (!href) return;
+
+        event.preventDefault();
+
+        if (body.classList.contains('page-transition--active')) {
+          return;
+        }
+
+        body.classList.add('page-transition');
+        window.requestAnimationFrame(() => {
+          body.classList.add('page-transition--active');
+        });
+
+        window.setTimeout(() => {
+          window.location.href = href;
+        }, fadeDuration);
+      });
+    });
+  }
+
   // ===== HEADER BLUR =====
   const blurredBar = document.getElementById('blurredBar');
   if (blurredBar) {
