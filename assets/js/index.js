@@ -4,6 +4,11 @@
   const body = document.body;
   if (body) body.classList.remove('no-js');
 
+  const raf =
+    typeof window.requestAnimationFrame === 'function'
+      ? window.requestAnimationFrame.bind(window)
+      : (cb) => window.setTimeout(cb, 16);
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // ===== PROFILE IMAGE SIZING =====
@@ -15,14 +20,23 @@
     aboutProfilePic.style.height = `${paraHeight}px`;
     aboutProfilePic.style.width = `${paraHeight}px`;
   };
+  let profilePicTicking = false;
+  const scheduleProfilePicSize = () => {
+    if (profilePicTicking) return;
+    profilePicTicking = true;
+    raf(() => {
+      profilePicTicking = false;
+      setProfilePicSize();
+    });
+  };
   if (aboutParagraph && aboutProfilePic) {
     setProfilePicSize();
     if ('ResizeObserver' in window) {
-      const resizeObserver = new ResizeObserver(() => setProfilePicSize());
+      const resizeObserver = new ResizeObserver(() => scheduleProfilePicSize());
       resizeObserver.observe(aboutParagraph);
     } else {
-      window.addEventListener('load', setProfilePicSize);
-      window.addEventListener('resize', setProfilePicSize);
+      window.addEventListener('load', scheduleProfilePicSize);
+      window.addEventListener('resize', scheduleProfilePicSize);
     }
   }
 
