@@ -153,6 +153,14 @@
     #work .grid > a.card:focus-visible {
       background-position: center 54%;
     }
+    #services,
+    #work,
+    #about,
+    #contact,
+    .footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 600px;
+    }
     /* Hero CTA button area */
     .cta {
       padding-left: 2%;
