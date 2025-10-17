@@ -463,6 +463,15 @@
       will-change:opacity, background-position;
       animation:heroFloat 9s ease-in-out infinite;
     }
+    .bg-band::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url('../background.gif') center / cover no-repeat;
+      opacity:0.4;
+      z-index:-2;
+      pointer-events:none;
+    }
     .bg-band.is-ready::before{opacity:1;}
 
     .hero {
