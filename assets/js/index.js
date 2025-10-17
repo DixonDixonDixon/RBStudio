@@ -4,41 +4,7 @@
   const body = document.body;
   if (body) body.classList.remove('no-js');
 
-  const raf =
-    typeof window.requestAnimationFrame === 'function'
-      ? window.requestAnimationFrame.bind(window)
-      : (cb) => window.setTimeout(cb, 16);
-
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  // ===== PROFILE IMAGE SIZING =====
-  const aboutParagraph = document.getElementById('about-paragraph');
-  const aboutProfilePic = document.getElementById('about-profile-pic');
-  const setProfilePicSize = () => {
-    if (!aboutParagraph || !aboutProfilePic) return;
-    const paraHeight = aboutParagraph.getBoundingClientRect().height;
-    aboutProfilePic.style.height = `${paraHeight}px`;
-    aboutProfilePic.style.width = `${paraHeight}px`;
-  };
-  let profilePicTicking = false;
-  const scheduleProfilePicSize = () => {
-    if (profilePicTicking) return;
-    profilePicTicking = true;
-    raf(() => {
-      profilePicTicking = false;
-      setProfilePicSize();
-    });
-  };
-  if (aboutParagraph && aboutProfilePic) {
-    setProfilePicSize();
-    if ('ResizeObserver' in window) {
-      const resizeObserver = new ResizeObserver(() => scheduleProfilePicSize());
-      resizeObserver.observe(aboutParagraph);
-    } else {
-      window.addEventListener('load', scheduleProfilePicSize);
-      window.addEventListener('resize', scheduleProfilePicSize);
-    }
-  }
 
   // ===== REVEAL ON SCROLL =====
   const revealEls = document.querySelectorAll('.reveal');
