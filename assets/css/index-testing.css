@@ -421,6 +421,18 @@
     .btn-primary{ background: var(--accent); color:#0f1611; border:1px solid var(--accent); font-weight:700 }
     .btn-primary:hover{ background:#9fdbc1; border-color:#9fdbc1 }
 
+    @property --bg-wave {
+      syntax: '<length>';
+      inherits: false;
+      initial-value: 0px;
+    }
+
+    @keyframes heroFloat {
+      0%   { --bg-wave: -18px; }
+      50%  { --bg-wave: 18px; }
+      100% { --bg-wave: -18px; }
+    }
+
     .bg-band{
       width:100vw;
       margin-left:calc(50% - 50vw);
@@ -430,16 +442,18 @@
       z-index:1;
       --bg-base-offset:-5vh;
       --bg-offset:0px;
+      --bg-wave:0px;
     }
     .bg-band::before{
       content:"";
       position:absolute;
       inset:0;
-      background:url('../background1.png') center calc(var(--bg-base-offset) + var(--bg-offset)) / cover no-repeat;
+      background:url('../background1.png') center calc(var(--bg-base-offset) + var(--bg-offset) + var(--bg-wave)) / cover no-repeat;
       opacity:0;
       transition:opacity 1.2s cubic-bezier(.4,0,.2,1);
       z-index:-1;
-      will-change:opacity;
+      will-change:opacity, background-position;
+      animation:heroFloat 9s ease-in-out infinite;
     }
     .bg-band.is-ready::before{opacity:1;}
 
@@ -558,12 +572,14 @@
     #services .grid > .card:nth-child(3){ background:#323c27; }
     html{scroll-behavior:smooth; scroll-padding-top:clamp(72px, 16.2vw, 162px)}
     /* Services hover reveal + tidy */
-    #services .card{padding:clamp(32px,4vw,48px) clamp(24px,4vw,32px); min-height:clamp(182px,26.6vw,294px); display:flex; align-items:center; justify-content:center; position:relative; gap:12px}
+    #services .card{padding:clamp(32px,4vw,48px) clamp(24px,4vw,32px); min-height:clamp(182px,26.6vw,294px); display:flex; align-items:center; justify-content:center; position:relative; gap:0px}
     #services .card h3{
       margin:0;
       text-align:center;
-      /* Increased font size by 200% */
-      font-size:clamp(36px,4.8vw,48px);
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      /* Slightly reduced font scale */
+      font-size:clamp(28px,3.8vw,38px);
     }
     #services .card p{display:block !important; color:var(--muted); margin:0; max-width:32ch}
     @media(max-width:1024px){
