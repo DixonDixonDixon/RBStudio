@@ -85,6 +85,10 @@
             isolation: isolate;
         }
 
+        .parallax__image {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .parallax {
                 background-attachment: scroll;
@@ -97,6 +101,22 @@
                 background-attachment: scroll;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax {
+                display: block;
+                height: auto;
+                min-height: 0;
+                background-image: none;
+                background-attachment: scroll;
+            }
+
+            .parallax__image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,14 +124,30 @@
         <a class="site-header__back" href="../index.html" aria-label="Back to main site">&larr;</a>
         <span>Petes head</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead1.png');" aria-label="Pete's Head illustration one"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead2.png');" aria-label="Pete's Head illustration two"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead3.png');" aria-label="Pete's Head illustration three"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead4.png');" aria-label="Pete's Head illustration four"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead5.png');" aria-label="Pete's Head illustration five"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead6.png');" aria-label="Pete's Head illustration six"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead7.png');" aria-label="Pete's Head illustration seven"></section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead8.png');" aria-label="Pete's Head illustration eight"></section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead1.png');" aria-label="Pete's Head illustration one">
+        <img class="parallax__image" src="../assets/peteshead1.png" alt="Pete's Head illustration one" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead2.png');" aria-label="Pete's Head illustration two">
+        <img class="parallax__image" src="../assets/peteshead2.png" alt="Pete's Head illustration two" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead3.png');" aria-label="Pete's Head illustration three">
+        <img class="parallax__image" src="../assets/peteshead3.png" alt="Pete's Head illustration three" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead4.png');" aria-label="Pete's Head illustration four">
+        <img class="parallax__image" src="../assets/peteshead4.png" alt="Pete's Head illustration four" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead5.png');" aria-label="Pete's Head illustration five">
+        <img class="parallax__image" src="../assets/peteshead5.png" alt="Pete's Head illustration five" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead6.png');" aria-label="Pete's Head illustration six">
+        <img class="parallax__image" src="../assets/peteshead6.png" alt="Pete's Head illustration six" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead7.png');" aria-label="Pete's Head illustration seven">
+        <img class="parallax__image" src="../assets/peteshead7.png" alt="Pete's Head illustration seven" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/peteshead8.png');" aria-label="Pete's Head illustration eight">
+        <img class="parallax__image" src="../assets/peteshead8.png" alt="Pete's Head illustration eight" loading="lazy">
+    </section>
     <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
 </html>
