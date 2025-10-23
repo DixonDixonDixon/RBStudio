@@ -59,15 +59,27 @@
     #work .card {
       position: relative;
       overflow: hidden;
-      background-size: 150% auto;
+      background-size: 130% auto;
       background-position: center;
       background-repeat: no-repeat;
       transition: background-position 0.35s ease, transform 0.4s cubic-bezier(.4,0,.2,1);
     }
-    #work .card:nth-child(1) { background-image: url("../work1_thumb.png"); }
-    #work .card:nth-child(2) { background-image: url("../work2_thumb.png"); }
+    #work .card:nth-child(1) { background-image: url("../work1_thumb.gif"); }
+    #work .card:nth-child(2) { background-image: url("../work4_thumb.png"); }
     #work .card:nth-child(3) { background-image: url("../work3_thumb.png"); }
-    #work .card:nth-child(4) { background-image: url("../work4_thumb.png"); }
+    #work .card:nth-child(4) { background-image: url("../work2_thumb.png"); }
+    #work .card:nth-child(1):hover,
+    #work .card:nth-child(1):focus-visible {
+      background-image: url("../work1_thumb.png");
+    }
+    #work .card:nth-child(3):hover,
+    #work .card:nth-child(3):focus-visible {
+      background-image: url("../work3_thumb_hover.png");
+    }
+    #work .card:nth-child(4):hover,
+    #work .card:nth-child(4):focus-visible {
+      background-image: url("../work2_thumb.gif");
+    }
     @media (max-width: 700px) {
       #work .grid {
         grid-template-columns: 1fr;
@@ -91,19 +103,6 @@
     }
     #work .grid > a.card {
       cursor: pointer;
-    }
-    #work .grid > a.card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 20, 25, 0.28);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none;
-    }
-    #work .grid > a.card:hover::after,
-    #work .grid > a.card:focus-visible::after {
-      opacity: 1;
     }
     #work .grid > a.card:hover,
     #work .grid > a.card:focus-visible {
@@ -424,7 +423,7 @@
       position:absolute;
       inset:0;
       background:url('../background.gif') center / cover no-repeat;
-      opacity:0.4;
+      opacity:0.3;
       z-index:-2;
       pointer-events:none;
     }
