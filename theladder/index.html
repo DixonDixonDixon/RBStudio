@@ -85,6 +85,10 @@
             isolation: isolate;
         }
 
+        .parallax__image {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .parallax {
                 background-attachment: scroll;
@@ -97,6 +101,22 @@
                 background-attachment: scroll;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax {
+                display: block;
+                height: auto;
+                min-height: 0;
+                background-image: none;
+                background-attachment: scroll;
+            }
+
+            .parallax__image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,11 +124,21 @@
         <a class="site-header__back" href="../index.html" aria-label="Back to main site">&larr;</a>
         <span>The Ladder</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/theladder1.png');" aria-label="The Ladder project image one"></section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder2.png');" aria-label="The Ladder project image two"></section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder3.png');" aria-label="The Ladder project image three"></section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder4.png');" aria-label="The Ladder project image four"></section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder5.png');" aria-label="The Ladder project image five"></section>
+    <section class="parallax" style="--bg-image: url('../assets/theladder1.png');" aria-label="The Ladder project image one">
+        <img class="parallax__image" src="../assets/theladder1.png" alt="The Ladder project image one" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/theladder2.png');" aria-label="The Ladder project image two">
+        <img class="parallax__image" src="../assets/theladder2.png" alt="The Ladder project image two" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/theladder3.png');" aria-label="The Ladder project image three">
+        <img class="parallax__image" src="../assets/theladder3.png" alt="The Ladder project image three" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/theladder4.png');" aria-label="The Ladder project image four">
+        <img class="parallax__image" src="../assets/theladder4.png" alt="The Ladder project image four" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/theladder5.png');" aria-label="The Ladder project image five">
+        <img class="parallax__image" src="../assets/theladder5.png" alt="The Ladder project image five" loading="lazy">
+    </section>
     <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
 </html>
