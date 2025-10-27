@@ -77,11 +77,16 @@
             padding: 0;
             text-align: center;
             background-image: var(--bg-image);
+            background-color: #26301f;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             isolation: isolate;
+        }
+
+        .parallax__image {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -96,6 +101,22 @@
                 background-attachment: scroll;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax {
+                display: block;
+                height: auto;
+                min-height: 0;
+                background-image: none;
+                background-attachment: scroll;
+            }
+
+            .parallax__image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,10 +124,18 @@
         <a class="site-header__back" href="../index.html" aria-label="Back to main site">&larr;</a>
         <span>Opalina</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina1.png');" aria-label="Opalina project image one"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina2.png');" aria-label="Opalina project image two"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina3.png');" aria-label="Opalina project image three"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina4.png');" aria-label="Opalina project image four"></section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina1.png');" aria-label="Opalina project image one">
+        <img class="parallax__image" src="../assets/Opalina1.png" alt="Opalina project image one" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina2.png');" aria-label="Opalina project image two">
+        <img class="parallax__image" src="../assets/Opalina2.png" alt="Opalina project image two" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina3.png');" aria-label="Opalina project image three">
+        <img class="parallax__image" src="../assets/Opalina3.png" alt="Opalina project image three" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina4.png');" aria-label="Opalina project image four">
+        <img class="parallax__image" src="../assets/Opalina4.png" alt="Opalina project image four" loading="lazy">
+    </section>
     <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
-</html> 
+</html>
