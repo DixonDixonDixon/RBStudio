@@ -18,7 +18,7 @@
 
         body {
             margin: 0;
-            background-color: #0f1419;
+            background-color: #26301f;
             color: #f5f7fa;
             font-family: "Cambo", serif;
             padding-top: 64px;
@@ -89,6 +89,60 @@
             display: none;
         }
 
+        .parallax--description {
+            background: #26301f;
+            color: #f5f7fa;
+            text-align: left;
+        }
+
+        .parallax--description__content {
+            max-width: min(720px, 80vw);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .parallax--description__content h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: 0.08em;
+        }
+
+        .parallax--description__content h2 {
+            margin: 0;
+            font-size: clamp(1.2rem, 4vw, 1.85rem);
+            font-weight: 400;
+            line-height: 1.4;
+            font-style: italic;
+            text-wrap: balance;
+        }
+
+        .parallax--description__content h3 {
+            margin: 0;
+            font-size: clamp(1.05rem, 3.4vw, 1.5rem);
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            text-wrap: balance;
+        }
+
+        .parallax--description__divider {
+            width: 80px;
+            height: 2px;
+            background: rgba(245, 247, 250, 0.45);
+            border: 0;
+            margin: 0;
+        }
+
+        .parallax--description__content p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
         @media (max-width: 768px) {
             .parallax {
                 background-attachment: scroll;
@@ -117,6 +171,37 @@
                 height: auto;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax--description {
+                padding: 3rem 0;
+            }
+
+            .parallax--description__content {
+                max-width: 90vw;
+                padding: 0;
+            }
+
+            .parallax--description__content h1 {
+                font-size: clamp(1.75rem, 8vw, 2.75rem);
+            }
+
+            .parallax--description__content h2 {
+                font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+            }
+
+            .parallax--description__content h3 {
+                font-size: clamp(1rem, 5vw, 1.35rem);
+            }
+
+            .parallax--description__divider {
+                width: 64px;
+            }
+
+            .parallax--description__content p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,6 +211,15 @@
     </header>
     <section class="parallax" style="--bg-image: url('../assets/peteshead1.png');" aria-label="Pete's Head illustration one">
         <img class="parallax__image" src="../assets/peteshead1.png" alt="Pete's Head illustration one" loading="lazy">
+    </section>
+    <section class="parallax parallax--description" aria-labelledby="petes-description">
+        <div class="parallax--description__content">
+            <h1 id="petes-description">PETE°S HEAD</h1>
+            <h2>Forged by storm. Finished by time.</h2>
+            <h3>Our whisky endures the North Sea—gales, salt, cold—no shelter, no climate tricks. The oak takes the beating; the spirit learns to stand its ground. Made in hardship, marked by weather.</h3>
+            <hr class="parallax--description__divider" aria-hidden="true">
+            <p>Pete’s Head is a coastal Scotch from Peterhead, Aberdeenshire — traditional malt and copper stills, then hardened at the coast. Our Storm Cask maturation gives no shelter: casks rest in storm-exposed warehouses where salt air, cold, gales, and pressure swings shape the spirit. We select and finish for a maritime imprint—briny brightness, toasted oak, and a dry, windswept finish. <strong>Made in hardship, marked by weather.</strong></p>
+        </div>
     </section>
     <section class="parallax" style="--bg-image: url('../assets/peteshead2.png');" aria-label="Pete's Head illustration two">
         <img class="parallax__image" src="../assets/peteshead2.png" alt="Pete's Head illustration two" loading="lazy">
@@ -138,6 +232,13 @@
     </section>
     <section class="parallax" style="--bg-image: url('../assets/peteshead5.png');" aria-label="Pete's Head illustration five">
         <img class="parallax__image" src="../assets/peteshead5.png" alt="Pete's Head illustration five" loading="lazy">
+    </section>
+    <section class="parallax parallax--description" aria-labelledby="petes-brand-world">
+        <div class="parallax--description__content">
+            <h1 id="petes-brand-world">BRAND WORLD</h1>
+            <p>At Pete’s Head, our brand world is single-minded: <strong>to truly thrive, you must endure.</strong> We celebrate people who work—and <strong>thrive</strong>—in rough, sometimes hostile conditions, mirroring a whisky matured at the mercy of coastal weather. Our <strong>gloomy, grim, grey</strong> visual language isn’t bleak for its own sake; it creates contrast so the <strong>calm confidence</strong> that emerges from hardship reads brighter and truer.</p>
+            <p>A <strong>St. Peter’s head cameo</strong> threads the story together—linking our namesake to <strong>Peterhead</strong>, anchoring place and provenance, and reinforcing the <strong>weather-aging (Storm Cask)</strong> philosophy at the heart of the brand.</p>
+        </div>
     </section>
     <section class="parallax" style="--bg-image: url('../assets/peteshead6.png');" aria-label="Pete's Head illustration six">
         <img class="parallax__image" src="../assets/peteshead6.png" alt="Pete's Head illustration six" loading="lazy">
