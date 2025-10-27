@@ -35,7 +35,6 @@
             align-items: center;
             background: #26301f;
             letter-spacing: 0.08em;
-            text-transform: uppercase;
             z-index: 10;
             padding: 0 2rem;
         }
@@ -89,6 +88,43 @@
             display: none;
         }
 
+        .parallax--description {
+            background: #e2ded7;
+            color: #2d2a26;
+            text-align: left;
+        }
+
+        .parallax--description__content {
+            max-width: min(720px, 80vw);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .parallax--description__content h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: 0.08em;
+        }
+
+        .parallax--description__content h2 {
+            margin: 0;
+            font-size: clamp(1.2rem, 4vw, 1.85rem);
+            font-weight: 400;
+            line-height: 1.4;
+            font-style: italic;
+            text-wrap: balance;
+        }
+
+        .parallax--description__content p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
         @media (max-width: 768px) {
             .parallax {
                 background-attachment: scroll;
@@ -117,6 +153,29 @@
                 height: auto;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax--description {
+                padding: 3rem 0;
+            }
+
+            .parallax--description__content {
+                max-width: 90vw;
+                padding: 0;
+            }
+
+            .parallax--description__content h1 {
+                font-size: clamp(1.75rem, 8vw, 2.75rem);
+            }
+
+            .parallax--description__content h2 {
+                font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+            }
+
+            .parallax--description__content p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,6 +185,13 @@
     </header>
     <section class="parallax" style="--bg-image: url('../assets/theladder1.png');" aria-label="The Ladder project image one">
         <img class="parallax__image" src="../assets/theladder1.png" alt="The Ladder project image one" loading="lazy">
+    </section>
+    <section class="parallax parallax--description" aria-labelledby="ladder-description">
+        <div class="parallax--description__content">
+            <h1 id="ladder-description">THE LADDER</h1>
+            <h2>Perfection in wine is elusive, almost mythical.<br>Yet we climb, stay curious, and reach higher each season.<br>Every step brings us closer to the extraordinary — guided by the land, the moon, and the quiet pursuit of better.</h2>
+            <p>The Ladder is a Crozes-Hermitage wine brand for people who want their everyday glass to rise a little higher. They farm biodynamically and work with the rhythm of the seasons and the moon. It’s a hands-on, labour-heavy way to grow grapes, but it’s how they like to make wine: honest, alive, and thoughtfully made. They are young, curious, and always aiming higher—one step, one vintage at a time.</p>
+        </div>
     </section>
     <section class="parallax" style="--bg-image: url('../assets/theladder2.png');" aria-label="The Ladder project image two">
         <img class="parallax__image" src="../assets/theladder2.png" alt="The Ladder project image two" loading="lazy">
