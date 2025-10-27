@@ -77,11 +77,16 @@
             padding: 0;
             text-align: center;
             background-image: var(--bg-image);
+            background-color: #26301f;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             isolation: isolate;
+        }
+
+        .parallax__image {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -96,6 +101,22 @@
                 background-attachment: scroll;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax {
+                display: block;
+                height: auto;
+                min-height: 0;
+                background-image: none;
+                background-attachment: scroll;
+            }
+
+            .parallax__image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,11 +124,21 @@
         <a class="site-header__back" href="../index.html" aria-label="Back to main site">&larr;</a>
         <span>Tres</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/Tres1.png');" aria-label="Tres project image one"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Tres2.png');" aria-label="Tres project image two"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Tres3.png');" aria-label="Tres project image three"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Tres4.png');" aria-label="Tres project image four"></section>
-    <section class="parallax" style="--bg-image: url('../assets/Tres5.png');" aria-label="Tres project image five"></section>
-    <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London, All rights reserved.</footer>
+    <section class="parallax" style="--bg-image: url('../assets/Tres1.png');" aria-label="Tres project image one">
+        <img class="parallax__image" src="../assets/Tres1.png" alt="Tres project image one" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres2.png');" aria-label="Tres project image two">
+        <img class="parallax__image" src="../assets/Tres2.png" alt="Tres project image two" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres3.png');" aria-label="Tres project image three">
+        <img class="parallax__image" src="../assets/Tres3.png" alt="Tres project image three" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres4.png');" aria-label="Tres project image four">
+        <img class="parallax__image" src="../assets/Tres4.png" alt="Tres project image four" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres5.png');" aria-label="Tres project image five">
+        <img class="parallax__image" src="../assets/Tres5.png" alt="Tres project image five" loading="lazy">
+    </section>
+    <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
 </html>
