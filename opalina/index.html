@@ -89,6 +89,43 @@
             display: none;
         }
 
+        .parallax--description {
+            background: #426255;
+            color: #cfdcb9;
+            text-align: left;
+        }
+
+        .parallax--description__content {
+            max-width: min(720px, 80vw);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .parallax--description__content h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: 0.08em;
+        }
+
+        .parallax--description__content h2 {
+            margin: 0;
+            font-size: clamp(1.2rem, 4vw, 1.85rem);
+            font-weight: 400;
+            line-height: 1.4;
+            font-style: italic;
+            text-wrap: balance;
+        }
+
+        .parallax--description__content p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
         @media (max-width: 768px) {
             .parallax {
                 background-attachment: scroll;
@@ -117,6 +154,29 @@
                 height: auto;
             }
         }
+
+        @media (max-width: 600px) {
+            .parallax--description {
+                padding: 3rem 0;
+            }
+
+            .parallax--description__content {
+                max-width: 90vw;
+                padding: 0;
+            }
+
+            .parallax--description__content h1 {
+                font-size: clamp(1.75rem, 8vw, 2.75rem);
+            }
+
+            .parallax--description__content h2 {
+                font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+            }
+
+            .parallax--description__content p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -127,6 +187,14 @@
     <section class="parallax" style="--bg-image: url('../assets/Opalina1.png');" aria-label="Opalina project image one">
         <img class="parallax__image" src="../assets/Opalina1.png" alt="Opalina project image one" loading="lazy">
     </section>
+    <section class="parallax parallax--description" aria-labelledby="opalina-description">
+        <div class="parallax--description__content">
+            <h1 id="opalina-description">OPALINA</h1>
+            <h2>Like an opal gathering colours, Opalina gathers people—hands move, voices warm, and many signals become one light. Made to share.</h2>
+            <p>Opalina is an Italian apéritif from Ferrara, made with Abate Fetel pears (IGP) for perfume and soft sweetness. White tea and meadow herbs—thyme blossom, lemon verbena, a hint of sage—frame the fruit. Chilled, it pours pale gold with a softly opaline, silken texture.</p>
+            <p>Enjoy as the Opalina Spritz: Opalina with prosecco and a splash of soda over ice, garnished with rosemary and a thin pear slice. Easy, graceful, made to share.</p>
+        </div>
+    </section>
     <section class="parallax" style="--bg-image: url('../assets/Opalina2.png');" aria-label="Opalina project image two">
         <img class="parallax__image" src="../assets/Opalina2.png" alt="Opalina project image two" loading="lazy">
     </section>
@@ -135,6 +203,18 @@
     </section>
     <section class="parallax" style="--bg-image: url('../assets/Opalina4.png');" aria-label="Opalina project image four">
         <img class="parallax__image" src="../assets/Opalina4.png" alt="Opalina project image four" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina5.png');" aria-label="Opalina project image five">
+        <img class="parallax__image" src="../assets/Opalina5.png" alt="Opalina project image five" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina6.png');" aria-label="Opalina project image six">
+        <img class="parallax__image" src="../assets/Opalina6.png" alt="Opalina project image six" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina7.png');" aria-label="Opalina project image seven">
+        <img class="parallax__image" src="../assets/Opalina7.png" alt="Opalina project image seven" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Opalina8.png');" aria-label="Opalina project image eight">
+        <img class="parallax__image" src="../assets/Opalina8.png" alt="Opalina project image eight" loading="lazy">
     </section>
     <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
