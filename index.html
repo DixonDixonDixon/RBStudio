@@ -62,8 +62,8 @@
     <!-- HERO CONTENT WRAPPER -->
     <section class="wrap hero">
       <!-- HERO MAIN CONTENT (headline and description) -->
-      <div class="hero-content-up">
-        <div class="hero-copy-wrap is-hidden">
+      <div class="hero__content">
+        <div class="hero__text hero__text--hidden">
           <h1>
             The only<br />
             safe way<br />
@@ -80,7 +80,7 @@
       </div>
 
       <!-- HERO CALL-TO-ACTION BUTTONS -->
-      <div class="cta">
+      <div class="hero__actions">
         <a class="btn" href="#contact">Tell us your idea</a>
         <a class="btn" href="#services">What we do</a>
       </div>
@@ -88,12 +88,27 @@
   </section>
 
   <main id="top">
-    <section id="services" class="reveal" aria-labelledby="services-title">
-      <h2 id="services-title" class="sr-only">Services</h2>
-      <div class="grid grid-3">
-        <article class="card"><h3>Intention</h3><p class="muted">Strategic positioning, tone of voice, and creative direction rooted in the real world.</p></article>
-        <article class="card"><h3>Creation</h3><p class="muted">Packaging and brand assets that embody your philosophy with clarity and punch.</p></article>
-        <article class="card"><h3>Application</h3><p class="muted">Visual systems that amplify your brand across every platform and touchpoint.</p></article>
+    <section id="services" class="services reveal" aria-labelledby="services-title">
+      <div class="services__inner">
+        <div class="services__content">
+          <div class="services__text">
+            <h1 id="services-title" class="services__headline">What the<br>hell do<br>we do?</h1>
+          </div>
+        </div>
+        <div class="services__list">
+          <article class="services__item">
+            <h3 class="services__item-title">Intention</h3>
+            <p class="services__item-copy">Strategic positioning, tone of voice, and creative direction rooted in the real world.</p>
+          </article>
+          <article class="services__item">
+            <h3 class="services__item-title">Creation</h3>
+            <p class="services__item-copy">Packaging and brand assets that embody your philosophy with clarity and punch.</p>
+          </article>
+          <article class="services__item">
+            <h3 class="services__item-title">Application</h3>
+            <p class="services__item-copy">Visual systems that amplify your brand across every platform and touchpoint.</p>
+          </article>
+        </div>
       </div>
     </section>
 
