@@ -190,9 +190,9 @@
   }
 
   // ===== COPY EMAIL + TOAST =====
-  const heroCopyWrap = document.querySelector('.hero-copy-wrap');
-  if (heroCopyWrap) {
-    const revealHeroCopy = () => heroCopyWrap.classList.remove('is-hidden');
+  const heroText = document.querySelector('.hero__text');
+  if (heroText) {
+    const revealHeroCopy = () => heroText.classList.remove('hero__text--hidden');
     if (window.innerWidth <= 640) {
       const onScrollReveal = () => {
         if (window.scrollY > 24) {
