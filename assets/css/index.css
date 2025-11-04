@@ -54,7 +54,7 @@
       width: 100vw;
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
-      padding: clamp(36px, 7vw, 72px) 0;
+      padding: clamp(24px, 5vw, 48px) 0;
     }
     .services__inner {
       width: min(var(--maxw), 100%);
@@ -103,7 +103,7 @@
       border-bottom: none;
     }
     .services__item-title {
-      margin: 0 0 0.25em;
+      margin: 0 0 0.08em;
       font-family: 'Cambo', serif;
       font-size: clamp(1.6rem, 3.2vw, 2.4rem);
       letter-spacing: 0.14em;
