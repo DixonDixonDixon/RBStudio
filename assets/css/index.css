@@ -40,10 +40,12 @@
       font-family: 'Cambo', serif;
       font-weight: 400;
       /* Responsive like the hero, but a touch smaller */
-      font-size: clamp(28px, 4.8vw, 56px);
+      font-size: clamp(24px, 4vw, 48px);
       line-height: 1.08;
       letter-spacing: 0.01em;
       margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
     /* Services section layout */
     #services {
@@ -428,8 +430,8 @@
       position: absolute;
       left: 0; right: 0;
       height: 44px;
-  background: #677a27;
-      border-radius: 12px;
+      background: rgba(103, 122, 39, 0.32);
+      border-radius: 0;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(.4,0,.2,1), top 0.25s cubic-bezier(.4,0,.2,1);
