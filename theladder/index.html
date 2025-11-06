@@ -133,26 +133,13 @@
             margin: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             .parallax {
                 background-attachment: scroll;
-                min-height: 70vh;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .parallax {
-                background-attachment: scroll;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .parallax {
                 display: block;
                 height: auto;
                 min-height: 0;
                 background-image: none;
-                background-attachment: scroll;
             }
 
             .parallax__image {
@@ -160,9 +147,7 @@
                 width: 100%;
                 height: auto;
             }
-        }
 
-        @media (max-width: 600px) {
             .parallax--description {
                 padding: 3rem 0;
             }
@@ -186,6 +171,12 @@
 
             .parallax--description__divider {
                 width: 64px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .parallax {
+                background-attachment: scroll;
             }
         }
     </style>
