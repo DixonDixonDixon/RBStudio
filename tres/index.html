@@ -89,32 +89,83 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
-            .parallax {
-                background-attachment: scroll;
-                min-height: 70vh;
-            }
+        .parallax--description {
+            background: #e6e6e6;
+            color: #2d2a26;
+            text-align: left;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .parallax {
-                background-attachment: scroll;
-            }
+        .parallax--description__content {
+            max-width: min(720px, 80vw);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        @media (max-width: 600px) {
+        .parallax--description__content h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: 0.08em;
+        }
+
+        .parallax--description__content h2 {
+            margin: 0;
+            font-size: clamp(1.2rem, 4vw, 1.85rem);
+            font-weight: 400;
+            line-height: 1.4;
+            font-style: italic;
+            text-wrap: balance;
+        }
+
+        .parallax--description__content p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
+        @media (max-width: 1200px) {
             .parallax {
+                background-attachment: scroll;
                 display: block;
                 height: auto;
                 min-height: 0;
                 background-image: none;
-                background-attachment: scroll;
             }
 
             .parallax__image {
                 display: block;
                 width: 100%;
                 height: auto;
+            }
+
+            .parallax--description {
+                padding: 3rem 0;
+            }
+
+            .parallax--description__content {
+                max-width: 90vw;
+                padding: 0;
+            }
+
+            .parallax--description__content h1 {
+                font-size: clamp(1.75rem, 8vw, 2.75rem);
+            }
+
+            .parallax--description__content h2 {
+                font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+            }
+
+            .parallax--description__content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .parallax {
+                background-attachment: scroll;
             }
         }
     </style>
@@ -127,6 +178,13 @@
     <section class="parallax" style="--bg-image: url('../assets/Tres1.png');" aria-label="Tres project image one">
         <img class="parallax__image" src="../assets/Tres1.png" alt="Tres project image one" loading="lazy">
     </section>
+    <section class="parallax parallax--description" aria-labelledby="tres-description">
+        <div class="parallax--description__content">
+            <h1 id="tres-description">Tres—</h1>
+            <h2>Tres— is a Finnish gin, distilled and macerated with 100% Finnish botanicals. It draws from Sky (spruce tips, birch, heather), Land (angelica, caraway), and Sea (sea buckthorn, samphire) for bright lift, firm structure, and a clean, mineral edge—uncomplicated and unapologetically Finnish.</h2>
+            <p>The design tells a simple story: when three Finnish ingredient groups come together in true harmony, they both defy expectations of how gin can taste and preserve gin’s integrity—so Tres slips into your favourite drinks with an unapologetically Finnish flair.</p>
+        </div>
+    </section>
     <section class="parallax" style="--bg-image: url('../assets/Tres2.png');" aria-label="Tres project image two">
         <img class="parallax__image" src="../assets/Tres2.png" alt="Tres project image two" loading="lazy">
     </section>
@@ -138,6 +196,12 @@
     </section>
     <section class="parallax" style="--bg-image: url('../assets/Tres5.png');" aria-label="Tres project image five">
         <img class="parallax__image" src="../assets/Tres5.png" alt="Tres project image five" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres6.png');" aria-label="Tres project image six">
+        <img class="parallax__image" src="../assets/Tres6.png" alt="Tres project image six" loading="lazy">
+    </section>
+    <section class="parallax" style="--bg-image: url('../assets/Tres7.png');" aria-label="Tres project image seven">
+        <img class="parallax__image" src="../assets/Tres7.png" alt="Tres project image seven" loading="lazy">
     </section>
     <footer class="site-footer">&copy; 2025 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
 </body>
