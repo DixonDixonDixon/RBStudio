@@ -4,20 +4,26 @@
     }
 
     /* About section paragraph width */
-    .about-flex-row p.muted {
-      width: clamp(44ch, 58vw, 82ch);
+    .about-copy {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(28px, 5vw, 72px);
+      width: min(100%, 86ch);
       max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
       text-align: left;
-      text-wrap: pretty;
-      column-count: 2;
-      column-gap: clamp(28px, 5vw, 64px);
+    }
+    .about-copy-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
+    .about-copy p {
+      margin: 0;
     }
     /* About section flex row and circular image */
     .about-flex-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       gap: 2.5em;
       margin-top: 1.5em;
@@ -29,18 +35,18 @@
         align-items: center;
         gap: 1.5em;
       }
-      .about-flex-row p.muted {
-        width: clamp(28ch, 36vw, 60ch);
-        text-align: center;
-        margin: 0 auto;
-        column-count: 1;
+      .about-copy {
+        width: min(100%, 86ch);
+        text-align: left;
+        margin: 0;
       }
     }
     @media (max-width: 700px) {
       .about-flex-row {
         align-items: center;
       }
-      .about-flex-row p.muted {
+      .about-copy {
+        grid-template-columns: 1fr;
         width: min(90vw, 60ch);
       }
     }
@@ -54,7 +60,6 @@
       margin: 0 0 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      text-align: center;
     }
     /* Services section layout */
     #services {
@@ -321,13 +326,9 @@
       --radius:18px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --glass:rgba(255,255,255,.06);
-      --header-progress:0;
-      --header-full-height:clamp(80px, 18vw, 180px);
-      --header-compact-height:clamp(48px, 6vw, 72px);
-      --logo-full-height:clamp(60px, 12vw, 150px);
-      --logo-compact-height:clamp(20px, 4vw, 50px);
-      --header-height:var(--header-full-height);
-      --logo-height:var(--logo-full-height);
+      --header-bar-height:clamp(72px, 16.2vw, 162px);
+      --header-nav-height:clamp(80px, 18vw, 180px);
+      --header-logo-height:clamp(60px, 12vw, 150px);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -368,7 +369,7 @@
     .blurred-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      height:var(--header-height);
+      height: var(--header-bar-height);
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.5s cubic-bezier(.4,0,.2,1), height 0.16s linear;
@@ -386,23 +387,51 @@
       justify-content:space-between;
       position:relative;
       padding:10px 0;
-      min-height:var(--header-height);
-      transition:min-height 0.16s linear;
+      min-height:var(--header-nav-height);
+      transition:min-height 0.16s linear, padding 0.16s linear;
     }
-    .logo{position:static; transform:none; display:flex; align-items:center; gap:10px; text-decoration:none;}        
+    .logo{position:static; transform:none; display:grid; align-items:center; justify-items:start; text-decoration:none;}        
     .logo img {
-      height:var(--logo-height);
-      max-height:calc(var(--header-height) - 20px);
+      grid-area:1 / 1;
+      height: var(--header-logo-height);
       display: block;
-      margin: auto;
-      transition: height 0.16s linear, max-height 0.16s linear, transform 1s ease;
+      margin: 0;
+      justify-self: start;
+      opacity: 1;
+      transform: scale(1);
+      transition: height 0.24s ease, opacity 0.24s ease, transform 0.24s ease;
+    }
+    body.logo-text-active .logo img {
+      height:0;
+      opacity: 0;
+      transform: scale(0.96);
     }
     .logo:hover img,
     .logo:focus-visible img,
     .logo:active img {
       filter: brightness(0) saturate(100%) invert(66%) sepia(92%) saturate(638%) hue-rotate(8deg) brightness(102%) contrast(101%);
     }
-  .logo-type{display:none !important; font-weight:700; letter-spacing:.4px}
+  .logo-type{
+      grid-area:1 / 1;
+      display:block;
+      justify-self:start;
+      max-width:none;
+      opacity:0;
+      overflow:visible;
+      white-space:nowrap;
+      transform:translateY(4px);
+      font-family: 'Cambo', serif;
+      font-weight:700;
+      letter-spacing:.4px;
+      text-transform: uppercase;
+      font-size:clamp(18px,6vw,22px);
+      pointer-events:none;
+      transition:opacity 0.24s ease, transform 0.24s ease;
+    }
+    body.logo-text-active .logo-type{
+      opacity:1;
+      transform:none;
+    }
 
     .hamburger {
       position: static;
@@ -624,13 +653,19 @@
     #selected-work,
     #about{
       margin-top:40px;
-      text-align:center;
     }
-    .section-divider{
-      width:70vw;
-      height:1px;
-      margin:36px auto;
-      background:rgba(233,239,227,.24);
+    #about,
+    #contact .wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .section-divider {
+      width: min(70vw, calc(var(--maxw) * 0.7));
+      height: 1px;
+      margin: clamp(28px, 5vw, 56px) auto;
+      background: rgba(233, 239, 227, 0.32);
     }
     .chip{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:8px 12px; color:var(--muted); font-size:14px}
 
@@ -648,8 +683,7 @@
       border-radius:0;
       padding:0;
       box-shadow:none;
-      margin:0 auto;
-      text-align:center;
+      margin:0;
     }
     .card h3{margin:8px 0 6px}
     .muted{color:var(--muted)}
@@ -670,12 +704,16 @@
     body.no-js .reveal{opacity:1; transform:none}
 
     @media (max-width: 640px){
-  :root{
-    --header-full-height:64px;
-    --header-compact-height:64px;
-  }
   .logo img{display:none}
-  .logo-type{display:block !important; font-size:clamp(18px,6vw,22px)}
+  .logo-type{
+        display:block;
+        position:static;
+        max-width:none;
+        opacity:1;
+        transform:none;
+        pointer-events:auto;
+        font-size:clamp(18px,6vw,22px);
+      }
       .nav{min-height:64px}
       .wrap{padding:18px}
       /* Type tuning for small screens */
@@ -689,7 +727,6 @@
     @media (max-width: 380px){
   .hero h1{font-size:clamp(26px, 10.5vw, 40px)}
     }
-  /* Remove this rule so .logo-type only appears in small screens */
     html{scroll-behavior:smooth; scroll-padding-top:clamp(72px, 16.2vw, 162px)}
     /* Toast */
     #toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:white; padding:10px 14px; border-radius:12px; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:320}
