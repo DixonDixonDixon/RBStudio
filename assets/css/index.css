@@ -5,13 +5,20 @@
 
     /* About section paragraph width */
     .about-flex-row p.muted {
-      width: clamp(28ch, 30vw, 60ch);
+      width: clamp(44ch, 58vw, 82ch);
       max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      text-wrap: pretty;
+      column-count: 2;
+      column-gap: clamp(28px, 5vw, 64px);
     }
     /* About section flex row and circular image */
     .about-flex-row {
       display: flex;
       align-items: flex-start;
+      justify-content: center;
       gap: 2.5em;
       margin-top: 1.5em;
       margin-bottom: 1.5em;
@@ -19,13 +26,14 @@
     @media (max-width: 1000px) {
       .about-flex-row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 1.5em;
       }
       .about-flex-row p.muted {
         width: clamp(28ch, 36vw, 60ch);
-        text-align: left;
-        margin: 0;
+        text-align: center;
+        margin: 0 auto;
+        column-count: 1;
       }
     }
     @media (max-width: 700px) {
@@ -46,6 +54,7 @@
       margin: 0 0 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-align: center;
     }
     /* Services section layout */
     #services {
@@ -312,6 +321,13 @@
       --radius:18px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --glass:rgba(255,255,255,.06);
+      --header-progress:0;
+      --header-full-height:clamp(80px, 18vw, 180px);
+      --header-compact-height:clamp(48px, 6vw, 72px);
+      --logo-full-height:clamp(60px, 12vw, 150px);
+      --logo-compact-height:clamp(20px, 4vw, 50px);
+      --header-height:var(--header-full-height);
+      --logo-height:var(--logo-full-height);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -352,10 +368,10 @@
     .blurred-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      height: clamp(72px, 16.2vw, 162px);
+      height:var(--header-height);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
+      transition: opacity 0.5s cubic-bezier(.4,0,.2,1), height 0.16s linear;
       background: transparent;
       backdrop-filter: saturate(140%) blur(8px);
       -webkit-backdrop-filter: saturate(140%) blur(8px);
@@ -370,14 +386,16 @@
       justify-content:space-between;
       position:relative;
       padding:10px 0;
-      min-height:clamp(80px, 18vw, 180px);
+      min-height:var(--header-height);
+      transition:min-height 0.16s linear;
     }
     .logo{position:static; transform:none; display:flex; align-items:center; gap:10px; text-decoration:none;}        
     .logo img {
-      height: clamp(60px, 12vw, 150px);
+      height:var(--logo-height);
+      max-height:calc(var(--header-height) - 20px);
       display: block;
       margin: auto;
-      transition: transform 1s ease;
+      transition: height 0.16s linear, max-height 0.16s linear, transform 1s ease;
     }
     .logo:hover img,
     .logo:focus-visible img,
@@ -606,6 +624,13 @@
     #selected-work,
     #about{
       margin-top:40px;
+      text-align:center;
+    }
+    .section-divider{
+      width:70vw;
+      height:1px;
+      margin:36px auto;
+      background:rgba(233,239,227,.24);
     }
     .chip{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:8px 12px; color:var(--muted); font-size:14px}
 
@@ -613,7 +638,7 @@
     @media(min-width:900px){ .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))} }
     .card{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow)}
     .contact-card-row{
-      justify-content:start;
+      justify-content:center;
     }
     .contact-card{
       width:clamp(320px, 60vw, 760px);
@@ -623,7 +648,8 @@
       border-radius:0;
       padding:0;
       box-shadow:none;
-      margin:0;
+      margin:0 auto;
+      text-align:center;
     }
     .card h3{margin:8px 0 6px}
     .muted{color:var(--muted)}
@@ -644,6 +670,10 @@
     body.no-js .reveal{opacity:1; transform:none}
 
     @media (max-width: 640px){
+  :root{
+    --header-full-height:64px;
+    --header-compact-height:64px;
+  }
   .logo img{display:none}
   .logo-type{display:block !important; font-size:clamp(18px,6vw,22px)}
       .nav{min-height:64px}
@@ -660,7 +690,6 @@
   .hero h1{font-size:clamp(26px, 10.5vw, 40px)}
     }
   /* Remove this rule so .logo-type only appears in small screens */
-    .nav{min-height:72px}
     html{scroll-behavior:smooth; scroll-padding-top:clamp(72px, 16.2vw, 162px)}
     /* Toast */
     #toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:white; padding:10px 14px; border-radius:12px; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:320}
