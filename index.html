@@ -17,12 +17,14 @@
   <meta property="og:url" content="https://example.com" />
   <meta property="og:image" content="assets/og-image.jpg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%A0%EF%B8%8F%3C/text%3E%3C/svg%3E" />
-  <link rel="preload" href="assets/background1.png" as="image" type="image/png" fetchpriority="high" />
-  <link rel="preload" href="assets/background.gif" as="image" type="image/gif" />
   <link rel="prefetch" href="peteshead/index.html" as="document" />
   <link rel="prefetch" href="opalina/index.html" as="document" />
   <link rel="prefetch" href="theladder/index.html" as="document" />
   <link rel="prefetch" href="tres/index.html" as="document" />
+  <link rel="preload" href="assets/work1_thumb.png" as="image" type="image/png" />
+  <link rel="preload" href="assets/work3_thumb_hover.png" as="image" type="image/png" />
+  <link rel="preload" href="assets/work2_thumb.gif" as="image" type="image/gif" />
+  <link rel="preload" href="assets/work2_thumb.png" as="image" type="image/png" />
   <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body class="no-js">
@@ -143,21 +145,26 @@
     </section>
 
     <section id="about" class="wrap reveal" aria-labelledby="about-title">
-  <h2 id="about-title">About the Bones</h2>
-  <div class="about-flex-row">
-    <p class="muted" id="about-paragraph">
-    Rare Bones Studio is the independent one-person practice of Dickson Wong, a brand and packaging design director with a decade of experience and a soft spot for work that’s quietly clever, visually sharp and just a little off-centre.<br><br>
-    After years inside the branding world, one thing became obvious: in an era of noise, scroll, hot takes and overdesigned everything, people crave clarity and common sense. Rare Bones exists to deliver exactly that: strategic, straight-talking design with strong foundations and zero fluff.<br><br>
-    I work directly with founders, distillers and small teams, and I also slot seamlessly into creative departments that need additional senior design capacity on brand and packaging briefs.<br><br>
-    It’s design with backbone: intentional, thoughtfully structured, and with just enough bite to be remembered.</p>
-  </div>
+      <h2 id="about-title">About the Bones</h2>
+      <div class="about-flex-row">
+        <div class="about-copy muted" id="about-paragraph">
+          <div class="about-copy-column">
+            <p>Rare Bones Studio is the independent one-person practice of Dickson Wong — a brand and packaging design director with a decade of experience and a soft spot for work that’s quietly clever, visually sharp and just a little off-centre.</p>
+            <p>After years inside the branding world, one thing became obvious: in an era of noise, scroll, hot takes and overdesigned everything, people crave clarity and common sense. Rare Bones exists to deliver exactly that — strategic, straight-talking design with strong foundations and zero fluff.</p>
+          </div>
+          <div class="about-copy-column">
+            <p>I work directly with founders, distillers and small teams, and I also slot seamlessly into creative departments that need additional senior design capacity on brand and packaging briefs.</p>
+            <p>It’s design with backbone: intentional, thoughtfully structured, and with just enough bite to be remembered.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="section-divider" aria-hidden="true"></div>
 
     <section id="contact" class="reveal" aria-labelledby="contact-title">
       <div class="wrap">
-  <h2 id="contact-title">Talk to the Bones</h2>
+        <h2 id="contact-title">Talk to the Bones</h2>
         <div class="grid contact-card-row">
           <div class="card contact-card">
             <p class="muted">Tell me what you’re building. Two or three sentences is perfect.</p>
