@@ -116,7 +116,7 @@
   // ===== PAGE FADE TRANSITION =====
   const galleryLinks = document.querySelectorAll('#work .card[href]');
   if (galleryLinks.length && !prefersReducedMotion.matches) {
-    const fadeDuration = 220;
+    const fadeDuration = 400;
     galleryLinks.forEach((link) => {
       link.addEventListener('click', (event) => {
         if (
