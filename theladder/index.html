@@ -76,17 +76,44 @@
             justify-content: center;
             padding: 0;
             text-align: center;
-            background-image: var(--bg-image);
             background-color: #26301f;
+            background-attachment: fixed;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .parallax::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: var(--bg-image);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            isolation: isolate;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .parallax.is-loaded::before {
+            opacity: 1;
         }
 
         .parallax__image {
             display: none;
+            opacity: 0;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax.is-loaded .parallax__image {
+            opacity: 1;
         }
 
         .parallax--description {
@@ -143,6 +170,10 @@
                 background-image: none;
             }
 
+            .parallax::before {
+                display: none;
+            }
+
             .parallax__image {
                 display: block;
                 width: 100%;
@@ -179,6 +210,11 @@
             .parallax {
                 background-attachment: scroll;
             }
+
+            .parallax::before,
+            .parallax__image {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -187,8 +223,8 @@
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
         <span>The Ladder</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/theladder1.png');" aria-label="The Ladder project image one">
-        <img class="parallax__image" src="../assets/theladder1.png" alt="The Ladder project image one" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder1.png" aria-label="The Ladder project image one">
+        <img class="parallax__image" data-src="../assets/theladder1.png" alt="The Ladder project image one" loading="eager" fetchpriority="high" decoding="async" width="2325" height="1202">
     </section>
     <section class="parallax parallax--description" aria-labelledby="ladder-description">
         <div class="parallax--description__content">
@@ -198,24 +234,79 @@
             <p>The Ladder is a Crozes-Hermitage wine brand for people who want their everyday glass to rise a little higher. We farm biodynamically and work with the rhythm of the seasons and the moon. It’s a hands-on, labour-heavy way to grow grapes, but it’s how we like to make wine: honest, alive, and thoughtfully made. We’re young, curious, and always aiming higher—one step, one vintage at a time.</p>
         </div>
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder2.png');" aria-label="The Ladder project image two">
-        <img class="parallax__image" src="../assets/theladder2.png" alt="The Ladder project image two" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder2.png" aria-label="The Ladder project image two">
+        <img class="parallax__image" data-src="../assets/theladder2.png" alt="The Ladder project image two" loading="lazy" decoding="async" width="2000" height="1000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder3.png');" aria-label="The Ladder project image three">
-        <img class="parallax__image" src="../assets/theladder3.png" alt="The Ladder project image three" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder3.png" aria-label="The Ladder project image three">
+        <img class="parallax__image" data-src="../assets/theladder3.png" alt="The Ladder project image three" loading="lazy" decoding="async" width="2000" height="1000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder4.png');" aria-label="The Ladder project image four">
-        <img class="parallax__image" src="../assets/theladder4.png" alt="The Ladder project image four" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder4.png" aria-label="The Ladder project image four">
+        <img class="parallax__image" data-src="../assets/theladder4.png" alt="The Ladder project image four" loading="lazy" decoding="async" width="4403" height="2424">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder5.png');" aria-label="The Ladder project image five">
-        <img class="parallax__image" src="../assets/theladder5.png" alt="The Ladder project image five" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder5.png" aria-label="The Ladder project image five">
+        <img class="parallax__image" data-src="../assets/theladder5.png" alt="The Ladder project image five" loading="lazy" decoding="async" width="2764" height="1792">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder6.png');" aria-label="The Ladder project image six">
-        <img class="parallax__image" src="../assets/theladder6.png" alt="The Ladder project image six" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder6.png" aria-label="The Ladder project image six">
+        <img class="parallax__image" data-src="../assets/theladder6.png" alt="The Ladder project image six" loading="lazy" decoding="async" width="2000" height="1000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/theladder7.png');" aria-label="The Ladder project image seven">
-        <img class="parallax__image" src="../assets/theladder7.png" alt="The Ladder project image seven" loading="lazy">
+    <section class="parallax" data-bg="../assets/theladder7.png" aria-label="The Ladder project image seven">
+        <img class="parallax__image" data-src="../assets/theladder7.png" alt="The Ladder project image seven" loading="lazy" decoding="async" width="2000" height="1359">
     </section>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
+    <script>
+        const imageSections = document.querySelectorAll(".parallax[data-bg]");
+
+        const loadSectionImage = (section) => {
+            if (section.dataset.loaded === "true") return;
+            section.dataset.loaded = "true";
+
+            const src = section.dataset.bg;
+            const visibleImage = section.querySelector(".parallax__image");
+            const preloadImage = new Image();
+
+            preloadImage.decoding = "async";
+            if (section === imageSections[0] && "fetchPriority" in preloadImage) {
+                preloadImage.fetchPriority = "high";
+            }
+            preloadImage.src = src;
+
+            const reveal = () => {
+                section.style.setProperty("--bg-image", `url("${src}")`);
+                if (visibleImage && !visibleImage.currentSrc) {
+                    visibleImage.src = src;
+                }
+                requestAnimationFrame(() => section.classList.add("is-loaded"));
+            };
+
+            if (preloadImage.decode) {
+                preloadImage.decode().then(reveal).catch(reveal);
+            } else {
+                preloadImage.onload = reveal;
+                preloadImage.onerror = reveal;
+            }
+        };
+
+        if ("IntersectionObserver" in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    loadSectionImage(entry.target);
+                    imageObserver.unobserve(entry.target);
+                });
+            }, {
+                rootMargin: "600px 0px"
+            });
+
+            imageSections.forEach((section, index) => {
+                if (index === 0) {
+                    loadSectionImage(section);
+                    return;
+                }
+                imageObserver.observe(section);
+            });
+        } else {
+            imageSections.forEach(loadSectionImage);
+        }
+    </script>
 </body>
 </html>
