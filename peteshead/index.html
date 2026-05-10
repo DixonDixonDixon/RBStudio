@@ -77,17 +77,44 @@
             justify-content: center;
             padding: 0;
             text-align: center;
-            background-image: var(--bg-image);
             background-color: #26301f;
+            background-attachment: fixed;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .parallax::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: var(--bg-image);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            isolation: isolate;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .parallax.is-loaded::before {
+            opacity: 1;
         }
 
         .parallax__image {
             display: none;
+            opacity: 0;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax.is-loaded .parallax__image {
+            opacity: 1;
         }
 
         .parallax--description {
@@ -153,6 +180,10 @@
                 background-image: none;
             }
 
+            .parallax::before {
+                display: none;
+            }
+
             .parallax__image {
                 display: block;
                 width: 100%;
@@ -193,6 +224,11 @@
             .parallax {
                 background-attachment: scroll;
             }
+
+            .parallax::before,
+            .parallax__image {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -201,8 +237,8 @@
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
         <span>Pete°s head</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead1.png');" aria-label="Pete°s Head illustration one">
-        <img class="parallax__image" src="../assets/peteshead1.png" alt="Pete°s Head illustration one" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead1.png" aria-label="Pete°s Head illustration one">
+        <img class="parallax__image" data-src="../assets/peteshead1.png" alt="Pete°s Head illustration one" loading="eager" fetchpriority="high" decoding="async" width="2000" height="2000">
     </section>
     <section class="parallax parallax--description" aria-labelledby="petes-description">
         <div class="parallax--description__content">
@@ -213,17 +249,17 @@
             <p>Pete°s Head is a coastal Scotch from Peterhead, Aberdeenshire — traditional malt and copper stills, then hardened at the coast. Our Storm Cask maturation gives no shelter: casks rest in storm-exposed warehouses where salt air, cold, gales, and pressure swings shape the spirit. We select and finish for a maritime imprint—briny brightness, toasted oak, and a dry, windswept finish. <strong>Made in hardship, marked by weather.</strong></p>
         </div>
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead2.png');" aria-label="Pete°s Head illustration two">
-        <img class="parallax__image" src="../assets/peteshead2.png" alt="Pete°s Head illustration two" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead2.png" aria-label="Pete°s Head illustration two">
+        <img class="parallax__image" data-src="../assets/peteshead2.png" alt="Pete°s Head illustration two" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead3.png');" aria-label="Pete°s Head illustration three">
-        <img class="parallax__image" src="../assets/peteshead3.png" alt="Pete°s Head illustration three" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead3.png" aria-label="Pete°s Head illustration three">
+        <img class="parallax__image" data-src="../assets/peteshead3.png" alt="Pete°s Head illustration three" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead4.png');" aria-label="Pete°s Head illustration four">
-        <img class="parallax__image" src="../assets/peteshead4.png" alt="Pete°s Head illustration four" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead4.png" aria-label="Pete°s Head illustration four">
+        <img class="parallax__image" data-src="../assets/peteshead4.png" alt="Pete°s Head illustration four" loading="lazy" decoding="async" width="2274" height="1787">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead5.png');" aria-label="Pete°s Head illustration five">
-        <img class="parallax__image" src="../assets/peteshead5.png" alt="Pete°s Head illustration five" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead5.png" aria-label="Pete°s Head illustration five">
+        <img class="parallax__image" data-src="../assets/peteshead5.png" alt="Pete°s Head illustration five" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
     <section class="parallax parallax--description" aria-labelledby="petes-brand-world">
         <div class="parallax--description__content">
@@ -232,15 +268,70 @@
             <p>A <strong>St. Peter’s head cameo</strong> threads the story together—linking our namesake to <strong>Peterhead</strong>, anchoring place and provenance, and reinforcing the <strong>weather-aging (Storm Cask)</strong> philosophy at the heart of the brand.</p>
         </div>
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead6.png');" aria-label="Pete°s Head illustration six">
-        <img class="parallax__image" src="../assets/peteshead6.png" alt="Pete°s Head illustration six" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead6.png" aria-label="Pete°s Head illustration six">
+        <img class="parallax__image" data-src="../assets/peteshead6.png" alt="Pete°s Head illustration six" loading="lazy" decoding="async" width="3722" height="1995">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead7.png');" aria-label="Pete°s Head illustration seven">
-        <img class="parallax__image" src="../assets/peteshead7.png" alt="Pete°s Head illustration seven" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead7.png" aria-label="Pete°s Head illustration seven">
+        <img class="parallax__image" data-src="../assets/peteshead7.png" alt="Pete°s Head illustration seven" loading="lazy" decoding="async" width="3040" height="1640">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/peteshead8.png');" aria-label="Pete°s Head illustration eight">
-        <img class="parallax__image" src="../assets/peteshead8.png" alt="Pete°s Head illustration eight" loading="lazy">
+    <section class="parallax" data-bg="../assets/peteshead8.png" aria-label="Pete°s Head illustration eight">
+        <img class="parallax__image" data-src="../assets/peteshead8.png" alt="Pete°s Head illustration eight" loading="lazy" decoding="async" width="1920" height="1080">
     </section>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
+    <script>
+        const imageSections = document.querySelectorAll(".parallax[data-bg]");
+
+        const loadSectionImage = (section) => {
+            if (section.dataset.loaded === "true") return;
+            section.dataset.loaded = "true";
+
+            const src = section.dataset.bg;
+            const visibleImage = section.querySelector(".parallax__image");
+            const preloadImage = new Image();
+
+            preloadImage.decoding = "async";
+            if (section === imageSections[0] && "fetchPriority" in preloadImage) {
+                preloadImage.fetchPriority = "high";
+            }
+            preloadImage.src = src;
+
+            const reveal = () => {
+                section.style.setProperty("--bg-image", `url("${src}")`);
+                if (visibleImage && !visibleImage.currentSrc) {
+                    visibleImage.src = src;
+                }
+                requestAnimationFrame(() => section.classList.add("is-loaded"));
+            };
+
+            if (preloadImage.decode) {
+                preloadImage.decode().then(reveal).catch(reveal);
+            } else {
+                preloadImage.onload = reveal;
+                preloadImage.onerror = reveal;
+            }
+        };
+
+        if ("IntersectionObserver" in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    loadSectionImage(entry.target);
+                    imageObserver.unobserve(entry.target);
+                });
+            }, {
+                rootMargin: "600px 0px"
+            });
+
+            imageSections.forEach((section, index) => {
+                if (index === 0) {
+                    loadSectionImage(section);
+                    return;
+                }
+                imageObserver.observe(section);
+            });
+        } else {
+            imageSections.forEach(loadSectionImage);
+        }
+    </script>
 </body>
 </html>
