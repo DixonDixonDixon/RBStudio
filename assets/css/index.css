@@ -48,6 +48,7 @@
       .about-copy {
         grid-template-columns: 1fr;
         width: min(90vw, 60ch);
+        text-align: center;
       }
     }
     #about-title, #contact-title {
