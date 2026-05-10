@@ -330,6 +330,10 @@
       --header-nav-height:clamp(80px, 18vw, 180px);
       --header-logo-height:clamp(60px, 12vw, 150px);
     }
+    body.header-compact {
+      --header-bar-height:72px;
+      --header-nav-height:72px;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
     body {
@@ -704,6 +708,9 @@
     body.no-js .reveal{opacity:1; transform:none}
 
     @media (max-width: 640px){
+  body.header-compact {
+        --header-nav-height:64px;
+      }
   .logo img{display:none}
   .logo-type{
         display:block;
