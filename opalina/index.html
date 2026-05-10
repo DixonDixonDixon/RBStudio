@@ -77,17 +77,44 @@
             justify-content: center;
             padding: 0;
             text-align: center;
-            background-image: var(--bg-image);
             background-color: #26301f;
+            background-attachment: fixed;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .parallax::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: var(--bg-image);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            isolation: isolate;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .parallax.is-loaded::before {
+            opacity: 1;
         }
 
         .parallax__image {
             display: none;
+            opacity: 0;
+            transition: opacity 700ms ease;
+        }
+
+        .parallax.is-loaded .parallax__image {
+            opacity: 1;
         }
 
         .parallax--description {
@@ -136,6 +163,10 @@
                 background-image: none;
             }
 
+            .parallax::before {
+                display: none;
+            }
+
             .parallax__image {
                 display: block;
                 width: 100%;
@@ -168,6 +199,11 @@
             .parallax {
                 background-attachment: scroll;
             }
+
+            .parallax::before,
+            .parallax__image {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -176,8 +212,8 @@
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
         <span>Opalina</span>
     </header>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina1.png');" aria-label="Opalina project image one">
-        <img class="parallax__image" src="../assets/Opalina1.png" alt="Opalina project image one" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina1.png" aria-label="Opalina project image one">
+        <img class="parallax__image" data-src="../assets/Opalina1.png" alt="Opalina project image one" loading="eager" fetchpriority="high" decoding="async" width="2000" height="1249">
     </section>
     <section class="parallax parallax--description" aria-labelledby="opalina-description">
         <div class="parallax--description__content">
@@ -187,33 +223,88 @@
             <p>Enjoy as the Opalina Spritz: Opalina with prosecco and a splash of soda over ice, garnished with rosemary and a thin pear slice. Easy, graceful, made to share.</p>
         </div>
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina2.png');" aria-label="Opalina project image two">
-        <img class="parallax__image" src="../assets/Opalina2.png" alt="Opalina project image two" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina2.png" aria-label="Opalina project image two">
+        <img class="parallax__image" data-src="../assets/Opalina2.png" alt="Opalina project image two" loading="lazy" decoding="async" width="4000" height="4000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina3.png');" aria-label="Opalina project image three">
-        <img class="parallax__image" src="../assets/Opalina3.png" alt="Opalina project image three" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina3.png" aria-label="Opalina project image three">
+        <img class="parallax__image" data-src="../assets/Opalina3.png" alt="Opalina project image three" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina4.png');" aria-label="Opalina project image four">
-        <img class="parallax__image" src="../assets/Opalina4.png" alt="Opalina project image four" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina4.png" aria-label="Opalina project image four">
+        <img class="parallax__image" data-src="../assets/Opalina4.png" alt="Opalina project image four" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina5.png');" aria-label="Opalina project image five">
-        <img class="parallax__image" src="../assets/Opalina5.png" alt="Opalina project image five" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina5.png" aria-label="Opalina project image five">
+        <img class="parallax__image" data-src="../assets/Opalina5.png" alt="Opalina project image five" loading="lazy" decoding="async" width="2000" height="2000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina6.png');" aria-label="Opalina project image six">
-        <img class="parallax__image" src="../assets/Opalina6.png" alt="Opalina project image six" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina6.png" aria-label="Opalina project image six">
+        <img class="parallax__image" data-src="../assets/Opalina6.png" alt="Opalina project image six" loading="lazy" decoding="async" width="2000" height="1195">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina7.png');" aria-label="Opalina project image seven">
-        <img class="parallax__image" src="../assets/Opalina7.png" alt="Opalina project image seven" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina7.png" aria-label="Opalina project image seven">
+        <img class="parallax__image" data-src="../assets/Opalina7.png" alt="Opalina project image seven" loading="lazy" decoding="async" width="2000" height="1143">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina8.png');" aria-label="Opalina project image eight">
-        <img class="parallax__image" src="../assets/Opalina8.png" alt="Opalina project image eight" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina8.png" aria-label="Opalina project image eight">
+        <img class="parallax__image" data-src="../assets/Opalina8.png" alt="Opalina project image eight" loading="lazy" decoding="async" width="2000" height="1000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina9.png');" aria-label="Opalina project image nine">
-        <img class="parallax__image" src="../assets/Opalina9.png" alt="Opalina project image nine" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina9.png" aria-label="Opalina project image nine">
+        <img class="parallax__image" data-src="../assets/Opalina9.png" alt="Opalina project image nine" loading="lazy" decoding="async" width="2000" height="1000">
     </section>
-    <section class="parallax" style="--bg-image: url('../assets/Opalina10.png');" aria-label="Opalina project image ten">
-        <img class="parallax__image" src="../assets/Opalina10.png" alt="Opalina project image ten" loading="lazy">
+    <section class="parallax" data-bg="../assets/Opalina10.png" aria-label="Opalina project image ten">
+        <img class="parallax__image" data-src="../assets/Opalina10.png" alt="Opalina project image ten" loading="lazy" decoding="async" width="2000" height="1143">
     </section>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
+    <script>
+        const imageSections = document.querySelectorAll(".parallax[data-bg]");
+
+        const loadSectionImage = (section) => {
+            if (section.dataset.loaded === "true") return;
+            section.dataset.loaded = "true";
+
+            const src = section.dataset.bg;
+            const visibleImage = section.querySelector(".parallax__image");
+            const preloadImage = new Image();
+
+            preloadImage.decoding = "async";
+            if (section === imageSections[0] && "fetchPriority" in preloadImage) {
+                preloadImage.fetchPriority = "high";
+            }
+            preloadImage.src = src;
+
+            const reveal = () => {
+                section.style.setProperty("--bg-image", `url("${src}")`);
+                if (visibleImage && !visibleImage.currentSrc) {
+                    visibleImage.src = src;
+                }
+                requestAnimationFrame(() => section.classList.add("is-loaded"));
+            };
+
+            if (preloadImage.decode) {
+                preloadImage.decode().then(reveal).catch(reveal);
+            } else {
+                preloadImage.onload = reveal;
+                preloadImage.onerror = reveal;
+            }
+        };
+
+        if ("IntersectionObserver" in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    loadSectionImage(entry.target);
+                    imageObserver.unobserve(entry.target);
+                });
+            }, {
+                rootMargin: "600px 0px"
+            });
+
+            imageSections.forEach((section, index) => {
+                if (index === 0) {
+                    loadSectionImage(section);
+                    return;
+                }
+                imageObserver.observe(section);
+            });
+        } else {
+            imageSections.forEach(loadSectionImage);
+        }
+    </script>
 </body>
 </html>
