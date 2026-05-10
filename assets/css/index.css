@@ -504,7 +504,7 @@
     .sidepanel{position:fixed; top:0; right:0; height:100%; width:300px; max-width:85vw; background:rgba(20,24,15,.96); box-shadow:var(--shadow); transform:translateX(100%); transition:transform .3s ease; z-index:220; display:flex; flex-direction:column}
     .sidepanel.open{transform:none}
     .sidepanel header{position:sticky; top:0; background:transparent; border:none; padding:18px 20px; display:flex; justify-content:flex-end}
-    .sidepanel nav{display:flex; flex-direction:column; gap:10px; padding:10px 20px 24px; text-align:right}
+    .sidepanel nav{display:flex; flex-direction:column; gap:10px; padding:10px 20px 24px; text-align:right; position:relative}
     .sidepanel a{
       display:block;
       padding:12px 14px;
@@ -522,20 +522,25 @@
     /* Remove static hover background */
     .sidepanel a:hover, .sidepanel a:focus { background: none; }
 
-    /* Highlight box for nav */
+    /* Sliding rule for nav hover */
     .sidepanel-nav-highlight {
       position: absolute;
-      left: 0; right: 0;
+      right: 6px;
+      width: 3px;
       height: 44px;
-      background: rgba(103, 122, 39, 0.32);
-      border-radius: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(136, 209, 179, 0.28);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s cubic-bezier(.4,0,.2,1), top 0.25s cubic-bezier(.4,0,.2,1);
+      transform: scaleY(0.72);
+      transform-origin: center;
+      transition: opacity 0.22s ease, top 0.28s cubic-bezier(.4,0,.2,1), height 0.28s cubic-bezier(.4,0,.2,1), transform 0.22s ease;
       z-index: 1;
     }
     .sidepanel-nav-highlight.visible {
       opacity: 1;
+      transform: scaleY(1);
     }
 
     .btn{
@@ -743,17 +748,17 @@
     @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important} }
     @media (max-width: 600px) {
       .sidepanel {
-        font-size: 1.1em;
+        font-size: 1.28em;
         padding-left: 18px;
         padding-right: 18px;
       }
       .sidepanel nav {
         padding-left: 0;
-        padding-right: 0;
+        padding-right: 12px;
       }
       .sidepanel a {
         font-size: 1em;
         padding-left: 8px;
-        padding-right: 8px;
+        padding-right: 20px;
       }
     }
