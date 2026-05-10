@@ -154,25 +154,12 @@
 
   // ===== HEADER SCROLL STATE =====
   const blurredBar = document.getElementById('blurredBar');
-  const clamp = (min, value, max) => Math.min(Math.max(value, min), max);
-  const lerp = (from, to, progress) => from + ((to - from) * progress);
-  const getHeaderMetrics = () => {
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
-    const vw = viewportWidth / 100;
-    return {
-      barExpanded: clamp(72, 16.2 * vw, 162),
-      navExpanded: clamp(80, 18 * vw, 180),
-      navCompact: viewportWidth <= 640 ? 64 : 72,
-    };
-  };
   const updateHeaderScrollState = () => {
     const scrollY = Math.max(window.scrollY || 0, 0);
-    const progress = Math.min(scrollY / 160, 1);
-    const metrics = getHeaderMetrics();
+    const isScrolled = scrollY > 0;
 
-    body.style.setProperty('--header-bar-height', `${lerp(metrics.barExpanded, 72, progress).toFixed(2)}px`);
-    body.style.setProperty('--header-nav-height', `${lerp(metrics.navExpanded, metrics.navCompact, progress).toFixed(2)}px`);
-    body.classList.toggle('logo-text-active', scrollY > 0);
+    body.classList.toggle('header-compact', isScrolled);
+    body.classList.toggle('logo-text-active', isScrolled);
 
     if (blurredBar) {
       if (scrollY > 10) {
@@ -184,7 +171,6 @@
   };
   updateHeaderScrollState();
   window.addEventListener('scroll', updateHeaderScrollState, { passive: true });
-  window.addEventListener('resize', updateHeaderScrollState);
 
   // ===== HERO PARALLAX =====
   const band = document.querySelector('.bg-band');
