@@ -377,7 +377,7 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.5s cubic-bezier(.4,0,.2,1), height 0.16s linear;
-      background: transparent;
+      background: rgba(38, 48, 31, 0.72);
       backdrop-filter: saturate(140%) blur(8px);
       -webkit-backdrop-filter: saturate(140%) blur(8px);
       z-index: 199;
