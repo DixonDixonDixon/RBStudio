@@ -21,6 +21,7 @@
   <link rel="prefetch" href="opalina/index.html" as="document" />
   <link rel="prefetch" href="theladder/index.html" as="document" />
   <link rel="prefetch" href="tres/index.html" as="document" />
+  <link rel="preload" href="assets/logo-yellow.svg" as="image" type="image/svg+xml" />
   <link rel="preload" href="assets/work1_thumb.png" as="image" type="image/png" />
   <link rel="preload" href="assets/work3_thumb_hover.png" as="image" type="image/png" />
   <link rel="preload" href="assets/work2_thumb.gif" as="image" type="image/gif" />
@@ -32,7 +33,10 @@
   <header>
     <div class="wrap nav">
       <a class="logo" href="#top" aria-label="Rare Bones Studio home">
-        <img src="assets/logo.svg" alt="Rare Bones Studio logo" width="150" height="150" decoding="async" />
+        <span class="logo-mark" aria-hidden="true">
+          <img class="logo-mark__img logo-mark__img--base" src="assets/logo.svg" alt="" width="150" height="150" decoding="async" />
+          <img class="logo-mark__img logo-mark__img--hover" src="assets/logo-yellow.svg" alt="" width="150" height="150" decoding="async" />
+        </span>
         <span class="logo-type">Rare Bones Studio</span>
       </a>
       <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="sidepanel" aria-expanded="false">
