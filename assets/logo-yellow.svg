@@ -12,11 +12,11 @@
       }
 
       .st2, .st3 {
-        fill: #fff;
+        fill: #f0c900;
       }
 
       .st2, .st1 {
-        stroke: #fff;
+        stroke: #f0c900;
         stroke-miterlimit: 10;
       }
 
