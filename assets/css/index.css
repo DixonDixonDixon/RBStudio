@@ -330,7 +330,8 @@
       --glass:rgba(255,255,255,.06);
       --header-bar-height:clamp(72px, 16.2vw, 162px);
       --header-nav-height:clamp(80px, 18vw, 180px);
-      --header-logo-height:clamp(60px, 12vw, 150px);
+      --header-logo-height:clamp(54px, 10.8vw, 135px);
+      --header-control-inset:clamp(16px, 2vw, 28px);
     }
     body.header-compact {
       --header-bar-height:72px;
@@ -399,11 +400,11 @@
     .logo{position:static; transform:none; display:grid; align-items:center; justify-items:start; text-decoration:none;}        
     .logo-mark {
       grid-area:1 / 1;
-      width: calc(var(--header-logo-height) + clamp(16px, 2vw, 28px));
+      width: calc(var(--header-logo-height) + var(--header-control-inset));
       height: var(--header-logo-height);
       display: grid;
       margin: 0;
-      padding-left:clamp(16px, 2vw, 28px);
+      padding-left:var(--header-control-inset);
       justify-self: start;
       opacity: 1;
       transform: scale(1);
@@ -436,7 +437,7 @@
       max-width:none;
       opacity:0;
       overflow:visible;
-      padding-left:clamp(16px, 2vw, 28px);
+      padding-left:var(--header-control-inset);
       white-space:nowrap;
       transform:translateY(4px);
       font-family: 'Cambo', serif;
@@ -460,10 +461,10 @@
       margin-left: auto;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: calc(60px + clamp(16px, 2vw, 28px));
+      justify-content: flex-end;
+      width: max(48px, calc(32px + var(--header-control-inset)));
       height: 60px;
-      padding-right:clamp(16px, 2vw, 28px);
+      padding-right:var(--header-control-inset);
       background: transparent;
       cursor: pointer;
       border: none;
@@ -745,8 +746,8 @@
         pointer-events:auto;
         font-size:clamp(18px,6vw,22px);
       }
-      .nav{min-height:64px}
-      .wrap{padding:18px}
+      .nav{min-height:64px; padding:10px 0}
+      .wrap:not(.nav){padding-block:18px; padding-inline:var(--gutter-inline)}
       /* Type tuning for small screens */
       .hero__text::before{opacity:1}
       .hero__text.hero__text--hidden{opacity:0; transform:translateY(20px)}
