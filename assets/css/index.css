@@ -330,7 +330,7 @@
       --glass:rgba(255,255,255,.06);
       --header-bar-height:clamp(72px, 16.2vw, 162px);
       --header-nav-height:clamp(80px, 18vw, 180px);
-      --header-logo-height:clamp(54px, 15vh, 135px);
+      --header-logo-height:clamp(54px, 10.8vw, 135px);
       --header-control-inset:clamp(16px, 2vw, 28px);
     }
     body.header-compact {
