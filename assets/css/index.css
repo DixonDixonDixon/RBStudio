@@ -212,6 +212,10 @@
     #work .card:nth-child(1):focus-visible {
       background-image: url("../work1_thumb.png");
     }
+    #work .card:nth-child(2):hover,
+    #work .card:nth-child(2):focus-visible {
+      background-image: url("../work4_thumb_hover.png");
+    }
     #work .card:nth-child(3):hover,
     #work .card:nth-child(3):focus-visible {
       background-image: url("../work3_thumb_hover.png");
