@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Ladder Portfolio</title>
+    <title>Pete°s Head Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%A0%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="preload" as="image" href="../assets/peteshead1.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&display=swap" rel="stylesheet">
+    <script src="./gallery.js" defer></script>
+    <script src="./project-gallery.js" defer></script>
     <style>
         :root {
             color-scheme: dark;
+            --gallery-background: #172016;
+            --page-max-width: 1600px;
+            --page-padding: clamp(1.5rem, 4vw, 2.5rem);
+            --gallery-gap: clamp(1rem, 2vw, 1.5rem);
+            --section-gap: clamp(3rem, 8vw, 7rem);
         }
 
         * {
             box-sizing: border-box;
         }
 
+        html {
+            background: var(--gallery-background);
+        }
+
         body {
             margin: 0;
-            background-color: #26301f;
+            background-color: var(--gallery-background);
             color: #f5f7fa;
             font-family: "Cambo", serif;
             padding-top: 64px;
@@ -36,6 +48,7 @@
             align-items: center;
             background: #26301f;
             letter-spacing: 0.08em;
+            text-transform: uppercase;
             z-index: 10;
             padding: 0 2rem;
         }
@@ -68,76 +81,57 @@
             opacity: 0.7;
         }
 
-        .parallax {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            text-align: center;
-            background-color: #26301f;
-            background-attachment: fixed;
-            isolation: isolate;
+        .project-feature,
+        .gallery-item {
+            margin: 0;
+        }
+
+        .project-feature {
+            width: 100%;
             overflow: hidden;
         }
 
-        .parallax::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-image: var(--bg-image);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        .project-feature img,
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
             opacity: 0;
-            pointer-events: none;
             transition: opacity 700ms ease;
         }
 
-        .parallax > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .parallax.is-loaded::before {
+        .project-feature img.is-loaded,
+        .gallery-item img.is-loaded {
             opacity: 1;
         }
 
-        .parallax__image {
+        .project-feature img.is-error,
+        .gallery-item img.is-error {
             display: none;
-            opacity: 0;
-            transition: opacity 700ms ease;
         }
 
-        .parallax.is-loaded .parallax__image {
-            opacity: 1;
-        }
-
-        .parallax--description {
-            background: #e2ded7;
-            color: #2d2a26;
+        .project-description {
+            margin: var(--section-gap) 0;
+            padding: clamp(3rem, 7vw, 6rem) var(--page-padding);
+            color: #f5f7fa;
             text-align: left;
         }
 
-        .parallax--description__content {
-            max-width: min(720px, 80vw);
+        .project-description__content {
+            max-width: 760px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .parallax--description__content h1 {
+        .project-description__content h1 {
             margin: 0;
             font-size: clamp(2rem, 6vw, 3.5rem);
             letter-spacing: 0.08em;
         }
 
-        .parallax--description__content h2 {
+        .project-description__content h2 {
             margin: 0;
             font-size: clamp(1.2rem, 4vw, 1.85rem);
             font-weight: 400;
@@ -146,73 +140,119 @@
             text-wrap: balance;
         }
 
-        .parallax--description__content p {
+        .project-description__content h3 {
+            margin: 0;
+            font-size: clamp(1.05rem, 3.4vw, 1.5rem);
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            text-wrap: balance;
+        }
+
+        .project-description__divider {
+            width: 80px;
+            height: 2px;
+            margin: 0;
+            border: 0;
+            background: rgba(245, 247, 250, 0.45);
+        }
+
+        .project-description__content p {
             margin: 0;
             font-size: 1.1rem;
             line-height: 1.6;
             text-wrap: balance;
         }
 
-        .parallax--description__divider {
-            width: 80px;
-            height: 2px;
-            background: rgba(45, 42, 38, 0.4);
-            border: 0;
-            margin: 0;
+        .project-gallery {
+            width: 100%;
+            max-width: calc(var(--page-max-width) + (2 * var(--page-padding)));
+            margin: 0 auto;
+            padding: 0 var(--page-padding);
+            background: var(--gallery-background);
         }
 
-        @media (max-width: 1200px) {
-            .parallax {
-                background-attachment: scroll;
-                display: block;
-                height: auto;
-                min-height: 0;
-                background-image: none;
+        .project-gallery__rows {
+            display: grid;
+            gap: var(--gallery-gap);
+        }
+
+        .gallery-row {
+            display: grid;
+            align-items: start;
+            gap: var(--gallery-gap);
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-item {
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            height: auto;
+            object-fit: contain;
+        }
+
+        .gallery-row--full {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-row--two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gallery-row--twoWideLeft {
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        }
+
+        .gallery-row--twoWideRight {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        }
+
+        .gallery-row--three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gallery-row--proportional {
+            grid-template-columns: var(--gallery-columns);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-row,
+            .gallery-row--full,
+            .gallery-row--two,
+            .gallery-row--twoWideLeft,
+            .gallery-row--twoWideRight,
+            .gallery-row--three,
+            .gallery-row--proportional {
+                grid-template-columns: minmax(0, 1fr);
             }
 
-            .parallax::before {
-                display: none;
-            }
-
-            .parallax__image {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-
-            .parallax--description {
-                padding: 3rem 0;
-            }
-
-            .parallax--description__content {
-                max-width: 90vw;
-                padding: 0;
-            }
-
-            .parallax--description__content h1 {
+            .project-description__content h1 {
                 font-size: clamp(1.75rem, 8vw, 2.75rem);
             }
 
-            .parallax--description__content h2 {
+            .project-description__content h2 {
                 font-size: clamp(1.1rem, 5.5vw, 1.6rem);
             }
 
-            .parallax--description__content p {
-                font-size: 1rem;
+            .project-description__content h3 {
+                font-size: clamp(1rem, 5vw, 1.35rem);
             }
 
-            .parallax--description__divider {
+            .project-description__divider {
                 width: 64px;
+            }
+
+            .project-description__content p {
+                font-size: 1rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .parallax {
-                background-attachment: scroll;
-            }
-
-            .parallax::before,
-            .parallax__image {
+            .project-feature img,
+            .gallery-item img {
                 transition: none;
             }
         }
@@ -221,92 +261,33 @@
 <body>
     <header class="site-header">
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
-        <span>The Ladder</span>
+        <span>Pete°s head</span>
     </header>
-    <section class="parallax" data-bg="../assets/theladder1.png" aria-label="The Ladder project image one">
-        <img class="parallax__image" data-src="../assets/theladder1.png" alt="The Ladder project image one" loading="eager" fetchpriority="high" decoding="async" width="2325" height="1202">
-    </section>
-    <section class="parallax parallax--description" aria-labelledby="ladder-description">
-        <div class="parallax--description__content">
-            <h1 id="ladder-description">THE LADDER</h1>
-            <h2>Perfection in wine is elusive, almost mythical.<br>Yet we climb, stay curious, and reach higher each season.<br>Every step brings us closer to the extraordinary — guided by the land, the moon, and the quiet pursuit of better.</h2>
-            <hr class="parallax--description__divider" aria-hidden="true">
-            <p>The Ladder is a Crozes-Hermitage wine brand for people who want their everyday glass to rise a little higher. We farm biodynamically and work with the rhythm of the seasons and the moon. It’s a hands-on, labour-heavy way to grow grapes, but it’s how we like to make wine: honest, alive, and thoughtfully made. We’re young, curious, and always aiming higher—one step, one vintage at a time.</p>
-        </div>
-    </section>
-    <section class="parallax" data-bg="../assets/theladder2.png" aria-label="The Ladder project image two">
-        <img class="parallax__image" data-src="../assets/theladder2.png" alt="The Ladder project image two" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/theladder3.png" aria-label="The Ladder project image three">
-        <img class="parallax__image" data-src="../assets/theladder3.png" alt="The Ladder project image three" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/theladder4.png" aria-label="The Ladder project image four">
-        <img class="parallax__image" data-src="../assets/theladder4.png" alt="The Ladder project image four" loading="lazy" decoding="async" width="4403" height="2424">
-    </section>
-    <section class="parallax" data-bg="../assets/theladder5.png" aria-label="The Ladder project image five">
-        <img class="parallax__image" data-src="../assets/theladder5.png" alt="The Ladder project image five" loading="lazy" decoding="async" width="2764" height="1792">
-    </section>
-    <section class="parallax" data-bg="../assets/theladder6.png" aria-label="The Ladder project image six">
-        <img class="parallax__image" data-src="../assets/theladder6.png" alt="The Ladder project image six" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/theladder7.png" aria-label="The Ladder project image seven">
-        <img class="parallax__image" data-src="../assets/theladder7.png" alt="The Ladder project image seven" loading="lazy" decoding="async" width="2000" height="1359">
-    </section>
+    <main class="project-page">
+        <figure class="project-feature" id="project-feature"></figure>
+        <section class="project-description" aria-labelledby="petes-description">
+            <div class="project-description__content">
+                <h1 id="petes-description">PETE°S HEAD</h1>
+                <h2>Forged by storm. Finished by time.</h2>
+                <h3>Our whisky endures the North Sea—gales, salt, cold—no shelter, no climate tricks. The oak takes the beating; the spirit learns to stand its ground. Made in hardship, marked by weather.</h3>
+                <hr class="project-description__divider" aria-hidden="true">
+                <p>Pete°s Head is a coastal Scotch from Peterhead, Aberdeenshire — traditional malt and copper stills, then hardened at the coast. Our Storm Cask maturation gives no shelter: casks rest in storm-exposed warehouses where salt air, cold, gales, and pressure swings shape the spirit. We select and finish for a maritime imprint—briny brightness, toasted oak, and a dry, windswept finish. <strong>Made in hardship, marked by weather.</strong></p>
+            </div>
+        </section>
+        <section class="project-gallery" aria-label="Pete°s Head project gallery">
+            <div class="project-gallery__rows" id="project-gallery-before-brand"></div>
+        </section>
+        <section class="project-description" aria-labelledby="petes-brand-world">
+            <div class="project-description__content">
+                <h1 id="petes-brand-world">BRAND WORLD</h1>
+                <p>At Pete°s Head, our brand world is single-minded: <strong>to truly thrive, you must endure.</strong> We celebrate people who work—and <strong>thrive</strong>—in rough, sometimes hostile conditions, mirroring a whisky matured at the mercy of coastal weather. Our <strong>gloomy, grim, grey</strong> visual language isn’t bleak for its own sake; it creates contrast so the <strong>calm confidence</strong> that emerges from hardship reads brighter and truer.</p>
+                <p>A <strong>St. Peter’s head cameo</strong> threads the story together—linking our namesake to <strong>Peterhead</strong>, anchoring place and provenance, and reinforcing the <strong>weather-aging (Storm Cask)</strong> philosophy at the heart of the brand.</p>
+            </div>
+        </section>
+        <section class="project-gallery" aria-label="Pete°s Head brand world gallery">
+            <div class="project-gallery__rows" id="project-gallery-after-brand"></div>
+        </section>
+    </main>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
-    <script>
-        const imageSections = document.querySelectorAll(".parallax[data-bg]");
-
-        const loadSectionImage = (section) => {
-            if (section.dataset.loaded === "true") return;
-            section.dataset.loaded = "true";
-
-            const src = section.dataset.bg;
-            const visibleImage = section.querySelector(".parallax__image");
-            const preloadImage = new Image();
-
-            preloadImage.decoding = "async";
-            if (section === imageSections[0] && "fetchPriority" in preloadImage) {
-                preloadImage.fetchPriority = "high";
-            }
-            preloadImage.src = src;
-
-            const reveal = () => {
-                section.style.setProperty("--bg-image", `url("${src}")`);
-                if (visibleImage && !visibleImage.currentSrc) {
-                    visibleImage.src = src;
-                }
-                requestAnimationFrame(() => section.classList.add("is-loaded"));
-            };
-
-            if (preloadImage.decode) {
-                preloadImage.decode().then(reveal).catch(reveal);
-            } else {
-                preloadImage.onload = reveal;
-                preloadImage.onerror = reveal;
-            }
-        };
-
-        if ("IntersectionObserver" in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    loadSectionImage(entry.target);
-                    imageObserver.unobserve(entry.target);
-                });
-            }, {
-                rootMargin: "600px 0px"
-            });
-
-            imageSections.forEach((section, index) => {
-                if (index === 0) {
-                    loadSectionImage(section);
-                    return;
-                }
-                imageObserver.observe(section);
-            });
-        } else {
-            imageSections.forEach(loadSectionImage);
-        }
-    </script>
 </body>
 </html>
