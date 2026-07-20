@@ -1,74 +1,61 @@
 "use strict";
 
-const petesheadProjectImages = {
+const theLadderProjectImages = {
     featuredImage: {
-        src: "../assets/peteshead1.png",
-        alt: "Pete°s Head whisky brand illustration",
+        src: "../assets/theladder1.png",
+        alt: "The Ladder wine brand campaign feature image",
         width: 2000,
-        height: 2000
+        height: 1126
     },
-    galleryRowsBeforeBrandWorld: [
+    galleryRows: [
         {
             images: [{
-                src: "../assets/peteshead2.png",
-                alt: "Pete°s Head whisky packaging illustration",
+                src: "../assets/theladder2a.png",
+                alt: "The Ladder wine bottle and packaging presentation",
                 width: 2000,
                 height: 2000
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/peteshead3.png",
-                alt: "Pete°s Head coastal whisky brand artwork",
-                width: 2000,
-                height: 2000
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/peteshead4.png",
-                alt: "Pete°s Head whisky visual identity presentation",
-                width: 2274,
-                height: 1787
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/peteshead5.png",
-                alt: "Pete°s Head whisky bottle and brand artwork",
-                width: 2000,
-                height: 2000
-            }]
-        }
-    ],
-    galleryRowsAfterBrandWorld: [
-        {
-            images: [{
-                src: "../assets/peteshead6.png",
-                alt: "Pete°s Head brand world campaign presentation",
-                width: 3722,
-                height: 1995
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/peteshead7.png",
-                alt: "Pete°s Head outdoor advertising presentation",
-                width: 3040,
-                height: 1640
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/peteshead8a.png",
-                alt: "Pete°s Head campaign portrait artwork",
-                width: 808,
-                height: 1080
             }, {
-                src: "../assets/peteshead8b.png",
-                alt: "Pete°s Head campaign portrait artwork companion",
-                width: 808,
-                height: 1080
+                src: "../assets/theladder2b.png",
+                alt: "The Ladder wine label and identity presentation",
+                width: 2000,
+                height: 2000
+            }]
+        },
+        {
+            images: [{
+                src: "../assets/theladder3.png",
+                alt: "The Ladder wine brand visual identity",
+                width: 4403,
+                height: 2424
+            }]
+        },
+        {
+            images: [{
+                src: "../assets/theladder4.png",
+                alt: "The Ladder wine campaign artwork",
+                width: 2764,
+                height: 1792
+            }]
+        },
+        {
+            images: [{
+                src: "../assets/theladder5a.png",
+                alt: "The Ladder wine campaign detail",
+                width: 1106,
+                height: 1000
+            }, {
+                src: "../assets/theladder5b.png",
+                alt: "The Ladder wine campaign companion detail",
+                width: 977,
+                height: 1000
+            }]
+        },
+        {
+            images: [{
+                src: "../assets/theladder6.png",
+                alt: "The Ladder wine brand campaign",
+                width: 2000,
+                height: 1359
             }]
         }
     ]
@@ -76,12 +63,7 @@ const petesheadProjectImages = {
 
 ProjectGallery.render({
     featureMount: document.querySelector("#project-feature"),
-    galleryMount: document.querySelector("#project-gallery-before-brand"),
-    featuredImage: petesheadProjectImages.featuredImage,
-    galleryRows: petesheadProjectImages.galleryRowsBeforeBrandWorld
+    galleryMount: document.querySelector("#project-gallery"),
+    featuredImage: theLadderProjectImages.featuredImage,
+    galleryRows: theLadderProjectImages.galleryRows
 });
-
-ProjectGallery.renderRows(
-    document.querySelector("#project-gallery-after-brand"),
-    petesheadProjectImages.galleryRowsAfterBrandWorld
-);
