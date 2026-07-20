@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Opalina Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%A0%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="preload" as="image" href="../assets/Opalina1.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&display=swap" rel="stylesheet">
+    <script src="./gallery.js" defer></script>
+    <script src="./project-gallery.js" defer></script>
     <style>
         :root {
             color-scheme: dark;
+            --page-max-width: 1600px;
+            --text-max-width: 720px;
+            --page-padding: clamp(1.5rem, 4vw, 2.5rem);
+            --gallery-gap: clamp(1rem, 2vw, 1.5rem);
+            --section-gap: clamp(4rem, 8vw, 7rem);
         }
 
         * {
@@ -19,8 +27,8 @@
 
         body {
             margin: 0;
-            background-color: #0f1419;
-            color: #f5f7fa;
+            background-color: #426255;
+            color: #cfdcb9;
             font-family: "Cambo", serif;
             padding-top: 64px;
             padding-bottom: 64px;
@@ -39,6 +47,7 @@
             text-transform: uppercase;
             z-index: 10;
             padding: 0 2rem;
+            color: #f5f7fa;
         }
 
         .site-header {
@@ -62,6 +71,7 @@
             text-transform: none;
             font-size: 1.5rem;
             line-height: 1;
+            transition: opacity 160ms ease;
         }
 
         .site-header__back:focus-visible,
@@ -69,76 +79,59 @@
             opacity: 0.7;
         }
 
-        .parallax {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .project-page {
+            width: 100%;
+            margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: #26301f;
-            background-attachment: fixed;
-            isolation: isolate;
-            overflow: hidden;
         }
 
-        .parallax::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-image: var(--bg-image);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        .project-feature,
+        .gallery-item {
+            margin: 0;
+        }
+
+        .project-feature img,
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
             opacity: 0;
-            pointer-events: none;
             transition: opacity 700ms ease;
         }
 
-        .parallax > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .parallax.is-loaded::before {
+        .project-feature img.is-loaded,
+        .gallery-item img.is-loaded {
             opacity: 1;
         }
 
-        .parallax__image {
+        .project-feature img.is-error,
+        .gallery-item img.is-error {
             display: none;
-            opacity: 0;
-            transition: opacity 700ms ease;
         }
 
-        .parallax.is-loaded .parallax__image {
-            opacity: 1;
-        }
-
-        .parallax--description {
+        .project-description {
+            margin: var(--section-gap) 0;
+            padding: clamp(3rem, 7vw, 6rem) var(--page-padding);
             background: #426255;
             color: #cfdcb9;
             text-align: left;
         }
 
-        .parallax--description__content {
-            max-width: min(720px, 80vw);
+        .project-description__content {
+            max-width: var(--text-max-width);
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .parallax--description__content h1 {
+        .project-description__content h1 {
             margin: 0;
             font-size: clamp(2rem, 6vw, 3.5rem);
             letter-spacing: 0.08em;
         }
 
-        .parallax--description__content h2 {
+        .project-description__content h2 {
             margin: 0;
             font-size: clamp(1.2rem, 4vw, 1.85rem);
             font-weight: 400;
@@ -147,61 +140,99 @@
             text-wrap: balance;
         }
 
-        .parallax--description__content p {
+        .project-description__content p {
             margin: 0;
             font-size: 1.1rem;
             line-height: 1.6;
             text-wrap: balance;
         }
 
-        @media (max-width: 1200px) {
-            .parallax {
-                background-attachment: scroll;
-                display: block;
+        .project-gallery__rows {
+            display: grid;
+            gap: var(--gallery-gap);
+        }
+
+        .project-gallery {
+            width: 100%;
+            max-width: calc(var(--page-max-width) + (2 * var(--page-padding)));
+            margin: 0 auto;
+            padding: 0 var(--page-padding);
+        }
+
+        .gallery-row {
+            display: grid;
+            align-items: start;
+            gap: var(--gallery-gap);
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-item {
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            height: auto;
+            object-fit: contain;
+        }
+
+        .gallery-row--full {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-row--two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gallery-row--twoWideLeft {
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        }
+
+        .gallery-row--twoWideRight {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        }
+
+        .gallery-row--three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gallery-row--proportional {
+            grid-template-columns: var(--gallery-columns);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-row,
+            .gallery-row--full,
+            .gallery-row--two,
+            .gallery-row--twoWideLeft,
+            .gallery-row--twoWideRight,
+            .gallery-row--three,
+            .gallery-row--proportional {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .gallery-item img {
                 height: auto;
-                min-height: 0;
-                background-image: none;
+                object-fit: contain;
             }
 
-            .parallax::before {
-                display: none;
-            }
-
-            .parallax__image {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-
-            .parallax--description {
-                padding: 3rem 0;
-            }
-
-            .parallax--description__content {
-                max-width: 90vw;
-                padding: 0;
-            }
-
-            .parallax--description__content h1 {
+            .project-description__content h1 {
                 font-size: clamp(1.75rem, 8vw, 2.75rem);
             }
 
-            .parallax--description__content h2 {
+            .project-description__content h2 {
                 font-size: clamp(1.1rem, 5.5vw, 1.6rem);
             }
 
-            .parallax--description__content p {
+            .project-description__content p {
                 font-size: 1rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .parallax {
-                background-attachment: scroll;
-            }
-
-            .parallax::before,
-            .parallax__image {
+            .site-header__back,
+            .project-feature img,
+            .gallery-item img {
                 transition: none;
             }
         }
@@ -212,102 +243,20 @@
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
         <span>Opalina</span>
     </header>
-    <section class="parallax" data-bg="../assets/Opalina1.png" aria-label="Opalina project image one">
-        <img class="parallax__image" data-src="../assets/Opalina1.png" alt="Opalina project image one" loading="eager" fetchpriority="high" decoding="async" width="2000" height="1249">
-    </section>
-    <section class="parallax parallax--description" aria-labelledby="opalina-description">
-        <div class="parallax--description__content">
-            <h1 id="opalina-description">OPALINA</h1>
-            <h2>Like an opal gathering colours, Opalina gathers people — hands move, voices warm, and many signals become one light.<br>Made to share.</h2>
-            <p>Opalina is an Italian apéritif from Ferrara, made with Abate Fetel pears (IGP) for perfume and soft sweetness. White tea and meadow herbs—thyme blossom, lemon verbena, a hint of sage—frame the fruit. Chilled, it pours pale gold with a softly opaline, silken texture.</p>
-            <p>Enjoy as the Opalina Spritz: Opalina with prosecco and a splash of soda over ice, garnished with rosemary and a thin pear slice. Easy, graceful, made to share.</p>
-        </div>
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina2.png" aria-label="Opalina project image two">
-        <img class="parallax__image" data-src="../assets/Opalina2.png" alt="Opalina project image two" loading="lazy" decoding="async" width="4000" height="4000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina3.png" aria-label="Opalina project image three">
-        <img class="parallax__image" data-src="../assets/Opalina3.png" alt="Opalina project image three" loading="lazy" decoding="async" width="2000" height="2000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina4.png" aria-label="Opalina project image four">
-        <img class="parallax__image" data-src="../assets/Opalina4.png" alt="Opalina project image four" loading="lazy" decoding="async" width="2000" height="2000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina5.png" aria-label="Opalina project image five">
-        <img class="parallax__image" data-src="../assets/Opalina5.png" alt="Opalina project image five" loading="lazy" decoding="async" width="2000" height="2000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina6.png" aria-label="Opalina project image six">
-        <img class="parallax__image" data-src="../assets/Opalina6.png" alt="Opalina project image six" loading="lazy" decoding="async" width="2000" height="1195">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina7.png" aria-label="Opalina project image seven">
-        <img class="parallax__image" data-src="../assets/Opalina7.png" alt="Opalina project image seven" loading="lazy" decoding="async" width="2000" height="1143">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina8.png" aria-label="Opalina project image eight">
-        <img class="parallax__image" data-src="../assets/Opalina8.png" alt="Opalina project image eight" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina9.png" aria-label="Opalina project image nine">
-        <img class="parallax__image" data-src="../assets/Opalina9.png" alt="Opalina project image nine" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina10.png" aria-label="Opalina project image ten">
-        <img class="parallax__image" data-src="../assets/Opalina10.png" alt="Opalina project image ten" loading="lazy" decoding="async" width="2000" height="1000">
-    </section>
-    <section class="parallax" data-bg="../assets/Opalina11.png" aria-label="Opalina project image eleven">
-        <img class="parallax__image" data-src="../assets/Opalina11.png" alt="Opalina project image eleven" loading="lazy" decoding="async" width="2000" height="1143">
-    </section>
+    <main class="project-page">
+        <figure class="project-feature" id="project-feature"></figure>
+        <section class="project-description" aria-labelledby="opalina-description">
+            <div class="project-description__content">
+                <h1 id="opalina-description">OPALINA</h1>
+                <h2>Like an opal gathering colours, Opalina gathers people — hands move, voices warm, and many signals become one light.<br>Made to share.</h2>
+                <p>Opalina is an Italian apéritif from Ferrara, made with Abate Fetel pears (IGP) for perfume and soft sweetness. White tea and meadow herbs—thyme blossom, lemon verbena, a hint of sage—frame the fruit. Chilled, it pours pale gold with a softly opaline, silken texture.</p>
+                <p>Enjoy as the Opalina Spritz: Opalina with prosecco and a splash of soda over ice, garnished with rosemary and a thin pear slice. Easy, graceful, made to share.</p>
+            </div>
+        </section>
+        <section class="project-gallery" aria-label="Opalina project gallery">
+            <div class="project-gallery__rows" id="project-gallery"></div>
+        </section>
+    </main>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>
-    <script>
-        const imageSections = document.querySelectorAll(".parallax[data-bg]");
-
-        const loadSectionImage = (section) => {
-            if (section.dataset.loaded === "true") return;
-            section.dataset.loaded = "true";
-
-            const src = section.dataset.bg;
-            const visibleImage = section.querySelector(".parallax__image");
-            const preloadImage = new Image();
-
-            preloadImage.decoding = "async";
-            if (section === imageSections[0] && "fetchPriority" in preloadImage) {
-                preloadImage.fetchPriority = "high";
-            }
-            preloadImage.src = src;
-
-            const reveal = () => {
-                section.style.setProperty("--bg-image", `url("${src}")`);
-                if (visibleImage && !visibleImage.currentSrc) {
-                    visibleImage.src = src;
-                }
-                requestAnimationFrame(() => section.classList.add("is-loaded"));
-            };
-
-            if (preloadImage.decode) {
-                preloadImage.decode().then(reveal).catch(reveal);
-            } else {
-                preloadImage.onload = reveal;
-                preloadImage.onerror = reveal;
-            }
-        };
-
-        if ("IntersectionObserver" in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    loadSectionImage(entry.target);
-                    imageObserver.unobserve(entry.target);
-                });
-            }, {
-                rootMargin: "600px 0px"
-            });
-
-            imageSections.forEach((section, index) => {
-                if (index === 0) {
-                    loadSectionImage(section);
-                    return;
-                }
-                imageObserver.observe(section);
-            });
-        } else {
-            imageSections.forEach(loadSectionImage);
-        }
-    </script>
 </body>
 </html>
