@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pete°s Head Portfolio</title>
+    <title>Tres Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%A0%EF%B8%8F%3C/text%3E%3C/svg%3E">
-    <link rel="preload" as="image" href="../assets/peteshead1.png" fetchpriority="high">
+    <link rel="preload" as="image" href="../assets/Tres1.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&display=swap" rel="stylesheet">
@@ -14,24 +14,20 @@
     <style>
         :root {
             color-scheme: dark;
-            --gallery-background: #172016;
             --page-max-width: 1600px;
+            --text-max-width: 720px;
             --page-padding: clamp(1.5rem, 4vw, 2.5rem);
             --gallery-gap: clamp(1rem, 2vw, 1.5rem);
-            --section-gap: clamp(3rem, 8vw, 7rem);
+            --section-gap: clamp(4rem, 8vw, 7rem);
         }
 
         * {
             box-sizing: border-box;
         }
 
-        html {
-            background: var(--gallery-background);
-        }
-
         body {
             margin: 0;
-            background-color: var(--gallery-background);
+            background-color: #e6e6e6;
             color: #f5f7fa;
             font-family: "Cambo", serif;
             padding-top: 64px;
@@ -74,6 +70,7 @@
             text-transform: none;
             font-size: 1.5rem;
             line-height: 1;
+            transition: opacity 160ms ease;
         }
 
         .site-header__back:focus-visible,
@@ -81,14 +78,15 @@
             opacity: 0.7;
         }
 
+        .project-page {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         .project-feature,
         .gallery-item {
             margin: 0;
-        }
-
-        .project-feature {
-            width: 100%;
-            overflow: hidden;
         }
 
         .project-feature img,
@@ -113,12 +111,13 @@
         .project-description {
             margin: var(--section-gap) 0;
             padding: clamp(3rem, 7vw, 6rem) var(--page-padding);
-            color: #f5f7fa;
+            background: #e6e6e6;
+            color: #2d2a26;
             text-align: left;
         }
 
         .project-description__content {
-            max-width: 760px;
+            max-width: var(--text-max-width);
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -140,23 +139,6 @@
             text-wrap: balance;
         }
 
-        .project-description__content h3 {
-            margin: 0;
-            font-size: clamp(1.05rem, 3.4vw, 1.5rem);
-            font-weight: 400;
-            line-height: 1.5;
-            letter-spacing: 0.02em;
-            text-wrap: balance;
-        }
-
-        .project-description__divider {
-            width: 80px;
-            height: 2px;
-            margin: 0;
-            border: 0;
-            background: rgba(245, 247, 250, 0.45);
-        }
-
         .project-description__content p {
             margin: 0;
             font-size: 1.1rem;
@@ -164,17 +146,16 @@
             text-wrap: balance;
         }
 
+        .project-gallery__rows {
+            display: grid;
+            gap: var(--gallery-gap);
+        }
+
         .project-gallery {
             width: 100%;
             max-width: calc(var(--page-max-width) + (2 * var(--page-padding)));
             margin: 0 auto;
             padding: 0 var(--page-padding);
-            background: var(--gallery-background);
-        }
-
-        .project-gallery__rows {
-            display: grid;
-            gap: var(--gallery-gap);
         }
 
         .gallery-row {
@@ -229,6 +210,11 @@
                 grid-template-columns: minmax(0, 1fr);
             }
 
+            .gallery-item img {
+                height: auto;
+                object-fit: contain;
+            }
+
             .project-description__content h1 {
                 font-size: clamp(1.75rem, 8vw, 2.75rem);
             }
@@ -237,20 +223,13 @@
                 font-size: clamp(1.1rem, 5.5vw, 1.6rem);
             }
 
-            .project-description__content h3 {
-                font-size: clamp(1rem, 5vw, 1.35rem);
-            }
-
-            .project-description__divider {
-                width: 64px;
-            }
-
             .project-description__content p {
                 font-size: 1rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
+            .site-header__back,
             .project-feature img,
             .gallery-item img {
                 transition: none;
@@ -261,31 +240,19 @@
 <body>
     <header class="site-header">
         <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
-        <span>Pete°s head</span>
+        <span>Tres—</span>
     </header>
     <main class="project-page">
         <figure class="project-feature" id="project-feature"></figure>
-        <section class="project-description" aria-labelledby="petes-description">
+        <section class="project-description" aria-labelledby="tres-description">
             <div class="project-description__content">
-                <h1 id="petes-description">PETE°S HEAD</h1>
-                <h2>Forged by storm. Finished by time.</h2>
-                <h3>Our whisky endures the North Sea—gales, salt, cold—no shelter, no climate tricks. The oak takes the beating; the spirit learns to stand its ground. Made in hardship, marked by weather.</h3>
-                <hr class="project-description__divider" aria-hidden="true">
-                <p>Pete°s Head is a coastal Scotch from Peterhead, Aberdeenshire — traditional malt and copper stills, then hardened at the coast. Our Storm Cask maturation gives no shelter: casks rest in storm-exposed warehouses where salt air, cold, gales, and pressure swings shape the spirit. We select and finish for a maritime imprint—briny brightness, toasted oak, and a dry, windswept finish. <strong>Made in hardship, marked by weather.</strong></p>
+                <h1 id="tres-description">Tres—</h1>
+                <h2>Tres— is a Finnish gin, distilled and macerated with 100% Finnish botanicals. It draws from Sky (spruce tips, birch, heather), Land (angelica, caraway), and Sea (sea buckthorn, samphire) for bright lift, firm structure, and a clean, mineral edge—uncomplicated and unapologetically Finnish.</h2>
+                <p>The design tells a simple story: when three Finnish ingredient groups come together in true harmony, they both defy expectations of how gin can taste and preserve gin’s integrity—so Tres slips into your favourite drinks with an unapologetically Finnish flair.</p>
             </div>
         </section>
-        <section class="project-gallery" aria-label="Pete°s Head project gallery">
-            <div class="project-gallery__rows" id="project-gallery-before-brand"></div>
-        </section>
-        <section class="project-description" aria-labelledby="petes-brand-world">
-            <div class="project-description__content">
-                <h1 id="petes-brand-world">BRAND WORLD</h1>
-                <p>At Pete°s Head, our brand world is single-minded: <strong>to truly thrive, you must endure.</strong> We celebrate people who work—and <strong>thrive</strong>—in rough, sometimes hostile conditions, mirroring a whisky matured at the mercy of coastal weather. Our <strong>gloomy, grim, grey</strong> visual language isn’t bleak for its own sake; it creates contrast so the <strong>calm confidence</strong> that emerges from hardship reads brighter and truer.</p>
-                <p>A <strong>St. Peter’s head cameo</strong> threads the story together—linking our namesake to <strong>Peterhead</strong>, anchoring place and provenance, and reinforcing the <strong>weather-aging (Storm Cask)</strong> philosophy at the heart of the brand.</p>
-            </div>
-        </section>
-        <section class="project-gallery" aria-label="Pete°s Head brand world gallery">
-            <div class="project-gallery__rows" id="project-gallery-after-brand"></div>
+        <section class="project-gallery" aria-label="Tres project gallery">
+            <div class="project-gallery__rows" id="project-gallery"></div>
         </section>
     </main>
     <footer class="site-footer">&copy; 2026 Rare Bones Studio &middot; London &middot; All rights reserved</footer>

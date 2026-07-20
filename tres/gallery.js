@@ -81,8 +81,6 @@
     };
 
     const renderRows = (mount, rows) => {
-        if (!mount) return;
-
         const fragment = document.createDocumentFragment();
 
         normaliseRows(rows).forEach((row) => {
@@ -155,7 +153,6 @@
 
     globalThis.ProjectGallery = Object.freeze({
         normaliseRows,
-        renderRows,
         render
     });
 })();
