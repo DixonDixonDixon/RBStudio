@@ -31,6 +31,19 @@ const theLadderProjectImages = {
         },
         {
             images: [{
+                src: "../assets/theladder3a.png",
+                alt: "Close-up of The Ladder Cabernet Franc wine label",
+                width: 2000,
+                height: 1500
+            }, {
+                src: "../assets/theladder3b.png",
+                alt: "The Ladder Roussanne wine bottle",
+                width: 1000,
+                height: 2000
+            }]
+        },
+        {
+            images: [{
                 src: "../assets/theladder4.png",
                 alt: "The Ladder wine campaign artwork",
                 width: 2764,
