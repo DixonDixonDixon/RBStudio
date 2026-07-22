@@ -61,8 +61,8 @@ const tresProjectImages = {
                 {
                     src: "../assets/Tres7.png",
                     alt: "Hand holding a bottle of Tres Finnish dry gin",
-                    width: 1722,
-                    height: 2048
+                    width: 1500,
+                    height: 1784
                 },
                 {
                     src: "../assets/Tres8.png",
@@ -94,8 +94,8 @@ const tresProjectImages = {
                 {
                     src: "../assets/Tres11.png",
                     alt: "Three illuminated outdoor posters showing details of the Tres packaging",
-                    width: 3303,
-                    height: 1804
+                    width: 2000,
+                    height: 1092
                 }
             ]
         }

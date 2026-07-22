@@ -4,8 +4,8 @@ const theLadderProjectImages = {
     featuredImage: {
         src: "../assets/theladder1.png",
         alt: "The Ladder wine brand campaign feature image",
-        width: 2000,
-        height: 1126
+        width: 1927,
+        height: 1075
     },
     galleryRows: [
         {
@@ -46,8 +46,8 @@ const theLadderProjectImages = {
             images: [{
                 src: "../assets/theladder4.png",
                 alt: "The Ladder wine campaign artwork",
-                width: 2764,
-                height: 1792
+                width: 2593,
+                height: 1640
             }]
         },
         {
@@ -67,8 +67,8 @@ const theLadderProjectImages = {
             images: [{
                 src: "../assets/theladder6.png",
                 alt: "The Ladder wine brand campaign",
-                width: 2000,
-                height: 1359
+                width: 1860,
+                height: 1265
             }]
         }
     ]
