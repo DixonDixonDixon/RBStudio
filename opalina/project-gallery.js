@@ -67,8 +67,8 @@ const opalinaProjectImages = {
             images: [{
                 src: "../assets/Opalina8.png",
                 alt: "Friends sharing Opalina spritzes at a sunlit outdoor table",
-                width: 2000,
-                height: 1341
+                width: 1500,
+                height: 1006
             }]
         },
         {
