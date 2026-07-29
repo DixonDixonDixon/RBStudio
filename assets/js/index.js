@@ -2,7 +2,6 @@
   'use strict';
 
   const body = document.body;
-  if (body) body.classList.remove('no-js');
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 

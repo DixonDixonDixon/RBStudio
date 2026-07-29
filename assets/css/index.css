@@ -314,7 +314,7 @@
       transform: none;
       transition-delay: 1.2s;
     }
-    body.no-js .hero__text {
+    html.no-js .hero__text {
       opacity: 1;
       transform: none;
     }
@@ -742,7 +742,7 @@
 
     .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1; transform:none}
-    body.no-js .reveal{opacity:1; transform:none}
+    html.no-js .reveal{opacity:1; transform:none}
 
     @media (max-width: 640px){
   body.header-compact {
