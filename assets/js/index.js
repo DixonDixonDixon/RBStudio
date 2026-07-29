@@ -172,26 +172,26 @@
   updateHeaderScrollState();
   window.addEventListener('scroll', updateHeaderScrollState, { passive: true });
 
-  // ===== HERO PARALLAX =====
+  // ===== HERO BACKGROUND =====
   const band = document.querySelector('.bg-band');
   if (band) {
     window.requestAnimationFrame(() => band.classList.add('is-ready'));
+
     if (!prefersReducedMotion.matches) {
-      let bandTicking = false;
-      const updateBand = () => {
-        bandTicking = false;
-        const y = window.scrollY || 0;
-        const offset = Math.round(-y * 0.6);
-        band.style.setProperty('--bg-offset', `${offset}px`);
+      let parallaxTicking = false;
+      const updateHeroParallax = () => {
+        const offset = -Math.min(Math.max(window.scrollY || 0, 0) * 0.18, 100);
+        band.style.setProperty('--hero-parallax-offset', `${offset}px`);
+        parallaxTicking = false;
       };
-      const requestBandUpdate = () => {
-        if (!bandTicking) {
-          bandTicking = true;
-          requestAnimationFrame(updateBand);
-        }
+      const requestHeroParallaxUpdate = () => {
+        if (parallaxTicking) return;
+        parallaxTicking = true;
+        window.requestAnimationFrame(updateHeroParallax);
       };
-      requestBandUpdate();
-      window.addEventListener('scroll', requestBandUpdate, { passive: true });
+
+      requestHeroParallaxUpdate();
+      window.addEventListener('scroll', requestHeroParallaxUpdate, { passive: true });
     }
   }
 
