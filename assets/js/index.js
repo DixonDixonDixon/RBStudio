@@ -224,22 +224,6 @@
   }
 
   // ===== COPY EMAIL + TOAST =====
-  const heroText = document.querySelector('.hero__text');
-  if (heroText) {
-    const revealHeroCopy = () => heroText.classList.remove('hero__text--hidden');
-    if (window.innerWidth <= 640) {
-      const onScrollReveal = () => {
-        if (window.scrollY > 24) {
-          revealHeroCopy();
-          window.removeEventListener('scroll', onScrollReveal);
-        }
-      };
-      window.addEventListener('scroll', onScrollReveal, { passive: true });
-    } else {
-      revealHeroCopy();
-    }
-  }
-
   const showToast = (msg) => {
     let toast = document.getElementById('toast');
     if (!toast) {

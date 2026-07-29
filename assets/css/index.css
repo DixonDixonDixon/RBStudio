@@ -293,28 +293,46 @@
       gap: 16px;
       width: 100%;
     }
+.hero__text-wrap {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+  isolation: isolate;
+}
 .hero__text {
   position: relative;
   display: inline-flex;
   flex-direction: column;
   gap: 12px;
   z-index: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
 }
-    .hero__text::before {
+    .bg-band.is-ready .hero__text {
+      opacity: 1;
+      transform: none;
+      transition-delay: 1.2s;
+    }
+    body.no-js .hero__text {
+      opacity: 1;
+      transform: none;
+    }
+    .hero__text-wrap::before {
       content: "";
       position: absolute;
       top: -24px;
       right: -24px;
       bottom: -24px;
       left: calc(-24px - 10%);
-      background: rgba(255, 254, 248, 0.88);
+      background: rgba(255, 254, 248, 0.4);
       border-radius: 24px;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       opacity: 0;
       z-index: -1;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.8s ease;
     }
     /* Sidebar type scale: 200% of base */
     .sidepanel{
@@ -743,12 +761,23 @@
       .nav{min-height:64px; padding:10px 0}
       .wrap:not(.nav){padding-block:18px; padding-inline:var(--gutter-inline)}
       /* Type tuning for small screens */
-      .hero__text::before{opacity:1}
-      .hero__text.hero__text--hidden{opacity:0; transform:translateY(20px)}
-      body.no-js .hero__text.hero__text--hidden{opacity:1; transform:none}
+      .bg-band.is-ready .hero__text-wrap::before{opacity:1; transition-delay:1.2s}
       .hero h1{font-size:clamp(28px, 9.5vw, 44px); line-height:1.08; letter-spacing:-0.02em}
       .hero p{font-size:clamp(14px,4.2vw,18px); max-width:40ch}
       .btn{padding:10px 14px; font-size:0.95rem}
+    }
+    @media (max-height: 830px) {
+      .hero {
+        height: auto;
+        min-height: 800px;
+        justify-content: flex-start;
+        padding-top: calc(var(--header-nav-height) + 40px);
+      }
+      .hero__content {
+        top: 0;
+        min-height: 0;
+        justify-content: flex-start;
+      }
     }
     @media (max-width: 380px){
   .hero h1{font-size:clamp(26px, 10.5vw, 40px)}
@@ -759,7 +788,7 @@
     #toast.show{opacity:1}
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
-      *{transition:none !important; animation:none !important}
+      *, *::before, *::after{transition:none !important; animation:none !important}
       .bg-band{--hero-parallax-offset:0px !important}
     }
     @media (max-width: 600px) {
