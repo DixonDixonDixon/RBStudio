@@ -31,7 +31,7 @@
             color: #f5f7fa;
             font-family: "Cambo", serif;
             padding-top: 64px;
-            padding-bottom: 64px;
+            padding-bottom: 0;
         }
 
         .site-header,
@@ -52,13 +52,16 @@
 
         .site-header {
             top: 0;
+            background: rgba(255, 254, 248, 0.82);
+            backdrop-filter: saturate(140%) blur(8px);
+            -webkit-backdrop-filter: saturate(140%) blur(8px);
             font-size: 2rem;
             justify-content: flex-start;
             gap: 1rem;
         }
 
         .site-footer {
-            bottom: 0;
+            position: static;
             text-transform: none;
             letter-spacing: 0.03em;
             font-size: 0.72rem;
