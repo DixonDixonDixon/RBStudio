@@ -332,7 +332,7 @@
       --muted:#555555;
       --accent:#88d1b3;   /* mint */
       --accent-2:#e7b46a; /* warm */
-      --logo-hover:#f0c900;
+      --logo-hover:#ec008c;
       --maxw:1280px;
       --gutter-inline: clamp(18px, 4vw, 24px);
       --radius:18px;
@@ -427,7 +427,7 @@
       display: block;
       object-fit: contain;
       pointer-events: none;
-      transition: opacity 0.12s ease;
+      transition: opacity 0.4s ease;
     }
     .logo-mark__img--base {
       filter: brightness(0);
@@ -468,7 +468,7 @@
       text-transform: uppercase;
       font-size:clamp(18px,6vw,22px);
       pointer-events:none;
-      transition:opacity 0.24s ease, transform 0.24s ease, color 0.12s ease;
+      transition:opacity 0.24s ease, transform 0.24s ease, color 0.4s ease;
     }
     body.logo-text-active .logo-type{
       opacity:1;

@@ -175,7 +175,35 @@
   // ===== HERO BACKGROUND =====
   const band = document.querySelector('.bg-band');
   if (band) {
-    window.requestAnimationFrame(() => band.classList.add('is-ready'));
+    const backgroundSrc = band.dataset.backgroundSrc;
+    const revealHeroBackground = () => {
+      window.requestAnimationFrame(() => band.classList.add('is-ready'));
+    };
+
+    if (backgroundSrc) {
+      const backgroundImage = new Image();
+      let backgroundRevealed = false;
+      const revealLoadedBackground = async () => {
+        if (backgroundRevealed) return;
+        backgroundRevealed = true;
+        if (typeof backgroundImage.decode === 'function') {
+          try {
+            await backgroundImage.decode();
+          } catch (error) {
+            // The load event still confirms the image is fully downloaded.
+          }
+        }
+        revealHeroBackground();
+      };
+
+      backgroundImage.addEventListener('load', revealLoadedBackground, { once: true });
+      backgroundImage.src = backgroundSrc;
+      if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
+        revealLoadedBackground();
+      }
+    } else {
+      revealHeroBackground();
+    }
 
     if (!prefersReducedMotion.matches) {
       let parallaxTicking = false;
