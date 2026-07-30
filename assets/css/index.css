@@ -767,6 +767,9 @@ html.no-js #work .card {
       box-shadow:none;
       margin:0;
     }
+    #contact{
+      padding-bottom:clamp(48px, 8vw, 96px);
+    }
     .card h3{margin:8px 0 6px}
     .muted{color:var(--muted)}
 
