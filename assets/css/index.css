@@ -260,12 +260,12 @@
       cursor: pointer;
     }
     #work .grid > .card--placeholder {
-      background-color: #2e351f;
+      background-color: #e6e4e4;
     }
     .placeholder__orbit {
       width: 52%;
       height: auto;
-      color: #d5e8c8;
+      color: #f17578;
       overflow: visible;
       transform-box: fill-box;
       transform-origin: center;
