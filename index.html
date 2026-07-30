@@ -24,6 +24,7 @@
   <link rel="prefetch" href="tres/index.html" as="document" />
   <link rel="preload" href="assets/logo-yellow.svg" as="image" type="image/svg+xml" />
   <link rel="preload" href="assets/peteshead_thumb_hover.png" as="image" type="image/png" />
+  <link rel="preload" href="assets/HUE_thumb_hover.png" as="image" type="image/png" />
   <link rel="preload" href="assets/theladder_thumb_hover.png" as="image" type="image/png" />
   <link rel="preload" href="assets/opalina_thumb.gif" as="image" type="image/gif" />
   <link rel="preload" href="assets/opalina_thumb_hover.png" as="image" type="image/png" />
@@ -127,17 +128,23 @@
             <span class="card__cta-sub">View project</span>
           </span>
         </a>
-        <a class="card card--tres" href="tres/index.html">
-          <span class="sr-only">Tres — view project</span>
+        <div class="card card--hue" role="img" aria-label="HUE — coming soon">
           <span class="card__cta" aria-hidden="true">
-            <span class="card__cta-title">Tres—</span>
-            <span class="card__cta-sub">View project</span>
+            <span class="card__cta-title">HUE</span>
+            <span class="card__cta-sub">Coming Soon</span>
           </span>
-        </a>
+        </div>
         <a class="card card--theladder" href="theladder/index.html">
           <span class="sr-only">The Ladder — view project</span>
           <span class="card__cta" aria-hidden="true">
             <span class="card__cta-title">The Ladder</span>
+            <span class="card__cta-sub">View project</span>
+          </span>
+        </a>
+        <a class="card card--tres" href="tres/index.html">
+          <span class="sr-only">Tres — view project</span>
+          <span class="card__cta" aria-hidden="true">
+            <span class="card__cta-title">Tres—</span>
             <span class="card__cta-sub">View project</span>
           </span>
         </a>
@@ -148,6 +155,16 @@
             <span class="card__cta-sub">View project</span>
           </span>
         </a>
+        <div class="card card--placeholder" role="img" aria-label="More work coming soon">
+          <svg class="placeholder__orbit" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="placeholder-orbit-path" d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0" />
+            </defs>
+            <text>
+              <textPath href="#placeholder-orbit-path" startOffset="50%" text-anchor="middle">MORE WORK COMING SOON</textPath>
+            </text>
+          </svg>
+        </div>
       </div>
     </section>
 
