@@ -5,6 +5,43 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // ===== WORK THUMBNAIL LOADING =====
+  const workCards = document.querySelectorAll('#work .card:not(.card--placeholder)');
+  workCards.forEach((card) => {
+    const backgroundValue = window.getComputedStyle(card).backgroundImage;
+    const backgroundMatch = backgroundValue.match(/^url\(["']?(.*?)["']?\)$/);
+
+    if (!backgroundMatch) {
+      card.classList.add('is-image-loaded');
+      return;
+    }
+
+    const thumbnail = new Image();
+    let revealStarted = false;
+    const revealCard = async () => {
+      if (revealStarted) return;
+      revealStarted = true;
+
+      if (typeof thumbnail.decode === 'function') {
+        try {
+          await thumbnail.decode();
+        } catch (error) {
+          // The load event still confirms the thumbnail is downloaded.
+        }
+      }
+
+      window.requestAnimationFrame(() => card.classList.add('is-image-loaded'));
+    };
+
+    thumbnail.addEventListener('load', revealCard, { once: true });
+    thumbnail.addEventListener('error', () => card.classList.add('is-image-loaded'), { once: true });
+    thumbnail.src = backgroundMatch[1];
+
+    if (thumbnail.complete && thumbnail.naturalWidth > 0) {
+      revealCard();
+    }
+  });
+
   // ===== REVEAL ON SCROLL =====
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length) {
