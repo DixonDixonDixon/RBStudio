@@ -293,18 +293,15 @@ html.no-js #work .card {
       }
     }
 #work .grid > a.card:hover,
-#work .grid > a.card:focus-visible,
-#work .grid > .card--hue:hover {
+#work .grid > a.card:focus-visible {
   background-position: center 54%;
 }
 #work .grid > a.card:hover::after,
-#work .grid > a.card:focus-visible::after,
-#work .grid > .card--hue:hover::after {
+#work .grid > a.card:focus-visible::after {
   opacity: 1;
 }
 #work .grid > a.card:hover .card__cta,
-#work .grid > a.card:focus-visible .card__cta,
-#work .grid > .card--hue:hover .card__cta {
+#work .grid > a.card:focus-visible .card__cta {
   opacity: 1;
 }
     #services,
