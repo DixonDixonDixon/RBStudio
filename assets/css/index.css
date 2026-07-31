@@ -894,7 +894,7 @@ html.no-js #work .card {
       .hero p{font-size:clamp(14px,4.2vw,18px); max-width:40ch}
       .btn{padding:10px 14px; font-size:0.95rem}
     }
-    @media (max-height: 830px) {
+    @media (min-width: 641px) and (max-height: 830px) {
       .wrap.hero {
         height: auto;
         min-height: 800px;
