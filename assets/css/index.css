@@ -921,7 +921,7 @@ html.no-js #work .card {
     }
     @media (max-width: 600px) {
       .sidepanel {
-        font-size: 1.28em;
+        font-size: 2em;
         padding-left: 18px;
         padding-right: 18px;
       }
