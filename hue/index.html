@@ -163,9 +163,51 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
+        .gallery-row--hue-three {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            aspect-ratio: 1;
+        }
+
+        .gallery-row--hue-three .gallery-item:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .gallery-row--hue-three .gallery-item:nth-child(2) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .gallery-row--hue-three .gallery-item:nth-child(3) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+
+        .gallery-row--hue-three .gallery-item img {
+            height: 100%;
+            object-fit: cover;
+        }
+
         @media (max-width: 768px) {
-            .gallery-row--two {
+            .gallery-row--two,
+            .gallery-row--hue-three {
                 grid-template-columns: 1fr;
+            }
+
+            .gallery-row--hue-three {
+                grid-template-rows: none;
+                aspect-ratio: auto;
+            }
+
+            .gallery-row--hue-three .gallery-item:nth-child(n) {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .gallery-row--hue-three .gallery-item img {
+                height: auto;
+                object-fit: initial;
             }
 
             .project-description h1 {
@@ -213,12 +255,15 @@
                     <img src="../assets/HUE2.png" alt="Two HUE English wine bottles displayed on a textured stone plinth" width="2304" height="1856" loading="lazy" decoding="async">
                 </figure>
 
-                <div class="gallery-row gallery-row--two">
+                <div class="gallery-row gallery-row--hue-three">
                     <figure class="gallery-item">
                         <img src="../assets/HUE3a.png" alt="Close-up of the HUE Dornfelder label with pink and purple colour-depth graphics" width="1000" height="1000" loading="lazy" decoding="async">
                     </figure>
                     <figure class="gallery-item">
-                        <img src="../assets/HUE3b.png" alt="Close-up of the HUE Pinot Noir label with orange colour-depth graphics" width="1000" height="1000" loading="lazy" decoding="async">
+                        <img src="../assets/HUE3b.png" alt="Close-up of the HUE Pinot Noir label with orange colour-depth graphics" width="2000" height="2000" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="../assets/HUE3c.png" alt="HUE Pinot Noir bottle featuring orange colour-depth graphics on the label" width="1000" height="2000" loading="lazy" decoding="async">
                     </figure>
                 </div>
             </div>
