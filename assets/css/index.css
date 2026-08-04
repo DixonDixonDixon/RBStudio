@@ -271,18 +271,9 @@ html.no-js #work .card {
     .placeholder__orbit {
       width: 52%;
       height: auto;
-      color: #3f3f3f;
-      overflow: visible;
       transform-box: fill-box;
       transform-origin: center;
       animation: placeholder-orbit-spin 18s linear infinite;
-    }
-    .placeholder__orbit text {
-      fill: currentColor;
-      font-family: 'Cambo', serif;
-      font-size: 13.4px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
     }
     @keyframes placeholder-orbit-spin {
       to { transform: rotate(360deg); }
