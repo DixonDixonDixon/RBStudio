@@ -932,6 +932,9 @@ html.no-js #work .card {
   body.header-compact {
         --header-nav-height:64px;
       }
+      .hero-pagination{
+        display:none;
+      }
   .logo-mark{display:none}
   .logo-type{
         display:block;
