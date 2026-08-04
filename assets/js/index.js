@@ -211,33 +211,111 @@
   // ===== HERO BACKGROUND =====
   const band = document.querySelector('.bg-band');
   if (band) {
-    const backgroundSrc = band.dataset.backgroundSrc;
+    const backgroundImages = Array.from(band.querySelectorAll('[data-hero-background]'));
+    const backgroundControls = Array.from(band.querySelectorAll('[data-hero-slide]'));
+    const rotationDelay = 4000;
+    let activeBackgroundIndex = 0;
+    let rotationTimer = null;
+
     const revealHeroBackground = () => {
       window.requestAnimationFrame(() => band.classList.add('is-ready'));
     };
 
-    if (backgroundSrc) {
-      const backgroundImage = new Image();
-      let backgroundRevealed = false;
-      const revealLoadedBackground = async () => {
-        if (backgroundRevealed) return;
-        backgroundRevealed = true;
-        if (typeof backgroundImage.decode === 'function') {
-          try {
-            await backgroundImage.decode();
-          } catch (error) {
-            // The load event still confirms the image is fully downloaded.
-          }
-        }
-        revealHeroBackground();
-      };
-
-      backgroundImage.addEventListener('load', revealLoadedBackground, { once: true });
-      backgroundImage.src = backgroundSrc;
-      if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
-        revealLoadedBackground();
+    const waitForHeroImage = async (image) => {
+      if (!image.complete) {
+        await new Promise((resolve) => {
+          image.addEventListener('load', resolve, { once: true });
+          image.addEventListener('error', resolve, { once: true });
+        });
       }
+
+      if (image.naturalWidth <= 0) return false;
+
+      if (typeof image.decode === 'function') {
+        try {
+          await image.decode();
+        } catch (error) {
+          // The load event still confirms the image is available.
+        }
+      }
+
+      return true;
+    };
+
+    const imageReadyPromises = backgroundImages.map(waitForHeroImage);
+
+    const showHeroBackground = (index) => {
+      if (!backgroundImages.length) return;
+
+      activeBackgroundIndex = (index + backgroundImages.length) % backgroundImages.length;
+      backgroundImages.forEach((image, imageIndex) => {
+        image.classList.toggle('is-active', imageIndex === activeBackgroundIndex);
+      });
+      backgroundControls.forEach((control, controlIndex) => {
+        const isActive = controlIndex === activeBackgroundIndex;
+        control.classList.toggle('is-active', isActive);
+        control.setAttribute('aria-pressed', String(isActive));
+      });
+    };
+
+    const stopHeroRotation = () => {
+      if (rotationTimer !== null) {
+        window.clearInterval(rotationTimer);
+        rotationTimer = null;
+      }
+    };
+
+    const startHeroRotation = () => {
+      stopHeroRotation();
+      if (
+        backgroundImages.length < 2 ||
+        prefersReducedMotion.matches ||
+        document.hidden
+      ) {
+        return;
+      }
+
+      rotationTimer = window.setInterval(() => {
+        showHeroBackground(activeBackgroundIndex + 1);
+      }, rotationDelay);
+    };
+
+    if (imageReadyPromises[0]) {
+      imageReadyPromises[0].then(() => revealHeroBackground());
     } else {
+      revealHeroBackground();
+    }
+
+    Promise.all(imageReadyPromises).then((results) => {
+      if (results.every(Boolean)) {
+        startHeroRotation();
+      }
+    });
+
+    backgroundControls.forEach((control) => {
+      control.addEventListener('click', async () => {
+        const requestedIndex = Number(control.dataset.heroSlide);
+        if (!Number.isInteger(requestedIndex) || !imageReadyPromises[requestedIndex]) return;
+
+        const imageIsReady = await imageReadyPromises[requestedIndex];
+        if (!imageIsReady) return;
+
+        showHeroBackground(requestedIndex);
+        startHeroRotation();
+      });
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopHeroRotation();
+      } else {
+        Promise.all(imageReadyPromises).then((results) => {
+          if (results.every(Boolean)) startHeroRotation();
+        });
+      }
+    });
+
+    if (!backgroundImages.length) {
       revealHeroBackground();
     }
 
