@@ -2,7 +2,7 @@
 
 const opalinaProjectImages = {
     featuredImage: {
-        src: "../assets/Opalina1.png",
+        src: "../assets/Opalina1.webp",
         alt: "Opalina aperitif bottle framed by two hands in a sunlit garden",
         width: 2000,
         height: 1249
@@ -10,7 +10,7 @@ const opalinaProjectImages = {
     galleryRows: [
         {
             images: [{
-                src: "../assets/Opalina2.png",
+                src: "../assets/Opalina2.webp",
                 alt: "Opalina aperitif bottles displayed against a dark green background",
                 width: 2000,
                 height: 1360
@@ -18,12 +18,12 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina3a.png",
+                src: "../assets/Opalina3a.webp",
                 alt: "Single Opalina bottle displayed against a dark green background",
                 width: 1000,
                 height: 1385
             }, {
-                src: "../assets/Opalina3b.png",
+                src: "../assets/Opalina3b.webp",
                 alt: "Angled Opalina bottle displayed against a dark green background",
                 width: 1628,
                 height: 1318
@@ -31,12 +31,12 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina4a.png",
+                src: "../assets/Opalina4a.webp",
                 alt: "Close-up of the embossed Opalina bottle shoulder and cap",
                 width: 1000,
                 height: 1000
             }, {
-                src: "../assets/Opalina4b.png",
+                src: "../assets/Opalina4b.webp",
                 alt: "Close-up of the Opalina label and illustrated hands",
                 width: 1000,
                 height: 1000
@@ -44,7 +44,7 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina5.png",
+                src: "../assets/Opalina5.webp",
                 alt: "Opalina bottles and pear leaves arranged on a pale green surface",
                 width: 2000,
                 height: 1365
@@ -52,12 +52,12 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina6a.png",
+                src: "../assets/Opalina6a.webp",
                 alt: "Opalina presentation box with bottle and pear spritz",
                 width: 1116,
                 height: 1000
             }, {
-                src: "../assets/Opalina6b.png",
+                src: "../assets/Opalina6b.webp",
                 alt: "Illuminated made-to-share Opalina advertising display",
                 width: 715,
                 height: 953
@@ -65,7 +65,7 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina8.png",
+                src: "../assets/Opalina8.webp",
                 alt: "Friends sharing Opalina spritzes at a sunlit outdoor table",
                 width: 1500,
                 height: 1006
@@ -73,7 +73,7 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina9.png",
+                src: "../assets/Opalina9.webp",
                 alt: "Opalina campaign graphics displayed across an outdoor wall",
                 width: 2000,
                 height: 1143
@@ -81,12 +81,12 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina10a.png",
+                src: "../assets/Opalina10a.webp",
                 alt: "Made-to-share Opalina advertisement displayed on a building",
                 width: 575,
                 height: 1000
             }, {
-                src: "../assets/Opalina10b.png",
+                src: "../assets/Opalina10b.webp",
                 alt: "Opalina campaign displayed on a delivery truck",
                 width: 1287,
                 height: 1000
@@ -94,7 +94,7 @@ const opalinaProjectImages = {
         },
         {
             images: [{
-                src: "../assets/Opalina11.png",
+                src: "../assets/Opalina11.webp",
                 alt: "Large Opalina made-to-share billboard beneath a blue sky",
                 width: 2000,
                 height: 1195

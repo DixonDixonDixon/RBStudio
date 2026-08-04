@@ -217,29 +217,29 @@ html.no-js #work .card {
   color: #f5f5f5;
 }
 #work .card--peteshead { background-image: url("../peteshead_thumb.gif"); }
-    #work .card--hue { background-image: url("../HUE_thumb.png"); }
-    #work .card--tres { background-image: url("../tres_thumb.png"); }
-    #work .card--theladder { background-image: url("../theladder_thumb.png"); }
+    #work .card--hue { background-image: url("../HUE_thumb.webp"); }
+    #work .card--tres { background-image: url("../tres_thumb.webp"); }
+    #work .card--theladder { background-image: url("../theladder_thumb.webp"); }
     #work .card--opalina { background-image: url("../opalina_thumb.gif"); }
     #work .card--peteshead:hover,
     #work .card--peteshead:focus-visible {
-      background-image: url("../peteshead_thumb_hover.png");
+      background-image: url("../peteshead_thumb_hover.webp");
     }
     #work .card--hue:hover,
     #work .card--hue:focus-visible {
-      background-image: url("../HUE_thumb_hover.png");
+      background-image: url("../HUE_thumb_hover.webp");
     }
     #work .card--tres:hover,
     #work .card--tres:focus-visible {
-      background-image: url("../tres_thumb_hover.png");
+      background-image: url("../tres_thumb_hover.webp");
     }
     #work .card--theladder:hover,
     #work .card--theladder:focus-visible {
-      background-image: url("../theladder_thumb_hover.png");
+      background-image: url("../theladder_thumb_hover.webp");
     }
     #work .card--opalina:hover,
     #work .card--opalina:focus-visible {
-      background-image: url("../opalina_thumb_hover.png");
+      background-image: url("../opalina_thumb_hover.webp");
     }
     @media (max-width: 700px) {
       #work .grid {
@@ -691,7 +691,7 @@ html.no-js #work .card {
       content:"";
       position:absolute;
       inset:-120px 0;
-      background:url('../background1.png') center / cover no-repeat;
+      background:url('../background1.webp') center / cover no-repeat;
       opacity:0;
       transition:opacity 1.2s cubic-bezier(.4,0,.2,1);
       transform:translate3d(0, var(--hero-parallax-offset), 0);

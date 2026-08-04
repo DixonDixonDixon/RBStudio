@@ -2,7 +2,7 @@
 
 const petesheadProjectImages = {
     featuredImage: {
-        src: "../assets/peteshead1.png",
+        src: "../assets/peteshead1.webp",
         alt: "Pete°s Head whisky brand illustration",
         width: 2000,
         height: 2000
@@ -10,7 +10,7 @@ const petesheadProjectImages = {
     galleryRowsBeforeBrandWorld: [
         {
             images: [{
-                src: "../assets/peteshead2.png",
+                src: "../assets/peteshead2.webp",
                 alt: "Pete°s Head whisky packaging illustration",
                 width: 2000,
                 height: 2000
@@ -18,7 +18,7 @@ const petesheadProjectImages = {
         },
         {
             images: [{
-                src: "../assets/peteshead3.png",
+                src: "../assets/peteshead3.webp",
                 alt: "Pete°s Head coastal whisky brand artwork",
                 width: 2000,
                 height: 2000
@@ -26,7 +26,7 @@ const petesheadProjectImages = {
         },
         {
             images: [{
-                src: "../assets/peteshead4.png",
+                src: "../assets/peteshead4.webp",
                 alt: "Pete°s Head whisky visual identity presentation",
                 width: 2274,
                 height: 1787
@@ -34,7 +34,7 @@ const petesheadProjectImages = {
         },
         {
             images: [{
-                src: "../assets/peteshead5.png",
+                src: "../assets/peteshead5.webp",
                 alt: "Pete°s Head whisky bottle and brand artwork",
                 width: 2000,
                 height: 2000
@@ -44,7 +44,7 @@ const petesheadProjectImages = {
     galleryRowsAfterBrandWorld: [
         {
             images: [{
-                src: "../assets/peteshead6.png",
+                src: "../assets/peteshead6.webp",
                 alt: "Pete°s Head brand world campaign presentation",
                 width: 3722,
                 height: 1995
@@ -52,7 +52,7 @@ const petesheadProjectImages = {
         },
         {
             images: [{
-                src: "../assets/peteshead7.png",
+                src: "../assets/peteshead7.webp",
                 alt: "Pete°s Head outdoor advertising presentation",
                 width: 3040,
                 height: 1640
@@ -60,12 +60,12 @@ const petesheadProjectImages = {
         },
         {
             images: [{
-                src: "../assets/peteshead8a.png",
+                src: "../assets/peteshead8a.webp",
                 alt: "Pete°s Head campaign portrait artwork",
                 width: 808,
                 height: 1080
             }, {
-                src: "../assets/peteshead8b.png",
+                src: "../assets/peteshead8b.webp",
                 alt: "Pete°s Head campaign portrait artwork companion",
                 width: 808,
                 height: 1080

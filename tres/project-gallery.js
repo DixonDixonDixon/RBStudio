@@ -2,7 +2,7 @@
 
 const tresProjectImages = {
     featuredImage: {
-        src: "../assets/Tres1.png",
+        src: "../assets/Tres1.webp",
         alt: "Model reclining beside a bottle of Tres Finnish dry gin",
         width: 4736,
         height: 3450
@@ -11,7 +11,7 @@ const tresProjectImages = {
         {
             images: [
                 {
-                    src: "../assets/Tres2.png",
+                    src: "../assets/Tres2.webp",
                     alt: "Three Tres gin bottles arranged with colourful geometric forms",
                     width: 2000,
                     height: 1500
@@ -21,7 +21,7 @@ const tresProjectImages = {
         {
             images: [
                 {
-                    src: "../assets/Tres3.png",
+                    src: "../assets/Tres3.webp",
                     alt: "Tres gin bottle and tonic can packaging presentation",
                     width: 2000,
                     height: 1680
@@ -31,7 +31,7 @@ const tresProjectImages = {
         {
             images: [
                 {
-                    src: "../assets/Tres4.png",
+                    src: "../assets/Tres4.webp",
                     alt: "Three Tres tonic cans beside translucent red and green forms",
                     width: 2000,
                     height: 1500
@@ -42,13 +42,13 @@ const tresProjectImages = {
             layout: "twoWideLeft",
             images: [
                 {
-                    src: "../assets/Tres5.png",
+                    src: "../assets/Tres5.webp",
                     alt: "Close-up of the Tres Finnish dry gin bottle label",
                     width: 1000,
                     height: 1000
                 },
                 {
-                    src: "../assets/Tres6.png",
+                    src: "../assets/Tres6.webp",
                     alt: "Close-up of the textured cap on a Tres gin bottle",
                     width: 1552,
                     height: 2000
@@ -59,13 +59,13 @@ const tresProjectImages = {
             layout: "twoWideRight",
             images: [
                 {
-                    src: "../assets/Tres7.png",
+                    src: "../assets/Tres7.webp",
                     alt: "Hand holding a bottle of Tres Finnish dry gin",
                     width: 1500,
                     height: 1784
                 },
                 {
-                    src: "../assets/Tres8.png",
+                    src: "../assets/Tres8.webp",
                     alt: "Model holding a Tres tonic can against a white backdrop",
                     width: 1000,
                     height: 924
@@ -76,13 +76,13 @@ const tresProjectImages = {
             layout: "twoWideLeft",
             images: [
                 {
-                    src: "../assets/Tres9.png",
+                    src: "../assets/Tres9.webp",
                     alt: "Tres tonic billboard displayed on a building",
                     width: 1610,
                     height: 1290
                 },
                 {
-                    src: "../assets/Tres10.png",
+                    src: "../assets/Tres10.webp",
                     alt: "Tres Finnish dry gin advertisement at a city bus shelter",
                     width: 1776,
                     height: 1328
@@ -92,7 +92,7 @@ const tresProjectImages = {
         {
             images: [
                 {
-                    src: "../assets/Tres11.png",
+                    src: "../assets/Tres11.webp",
                     alt: "Three illuminated outdoor posters showing details of the Tres packaging",
                     width: 2000,
                     height: 1092
