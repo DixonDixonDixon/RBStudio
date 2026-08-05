@@ -827,6 +827,12 @@ html.no-js #work .card {
       margin-top: 18px;
       justify-content: flex-end;
     }
+    .hero__actions .btn {
+      --btn-bg: rgba(255, 255, 255, 0.2);
+      --btn-b: rgba(255, 255, 255, 0.3);
+      --btn-bg-hover: rgba(213, 232, 200, 0.8);
+      --btn-b-hover: rgba(213, 232, 200, 0.9);
+    }
 
     .footer{
       margin:60px auto 30px;
