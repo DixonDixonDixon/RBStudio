@@ -4,29 +4,16 @@ const opalinaProjectImages = {
     featuredImage: {
         src: "../assets/Opalina1.webp",
         alt: "Opalina aperitif bottle framed by two hands in a sunlit garden",
-        width: 2000,
-        height: 1249
+        width: 2475,
+        height: 1500
     },
     galleryRows: [
         {
             images: [{
                 src: "../assets/Opalina2.webp",
                 alt: "Opalina aperitif bottles displayed against a dark green background",
-                width: 2000,
-                height: 1360
-            }]
-        },
-        {
-            images: [{
-                src: "../assets/Opalina3a.webp",
-                alt: "Single Opalina bottle displayed against a dark green background",
-                width: 1000,
-                height: 1385
-            }, {
-                src: "../assets/Opalina3b.webp",
-                alt: "Angled Opalina bottle displayed against a dark green background",
-                width: 1628,
-                height: 1318
+                width: 4000,
+                height: 3153
             }]
         },
         {
