@@ -8,6 +8,15 @@
   // ===== WORK THUMBNAIL LOADING =====
   const workCards = document.querySelectorAll('#work .card:not(.card--placeholder)');
   workCards.forEach((card) => {
+    const video = card.querySelector('.card__media');
+    if (video) {
+      const revealVideoCard = () => card.classList.add('is-image-loaded');
+      video.addEventListener('loadeddata', revealVideoCard, { once: true });
+      video.addEventListener('error', revealVideoCard, { once: true });
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) revealVideoCard();
+      return;
+    }
+
     const backgroundValue = window.getComputedStyle(card).backgroundImage;
     const backgroundMatch = backgroundValue.match(/^url\(["']?(.*?)["']?\)$/);
 

@@ -179,6 +179,15 @@
 html.no-js #work .card {
   opacity: 1;
 }
+.card__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 #work .card::after {
   content: "";
   position: absolute;
@@ -220,7 +229,7 @@ html.no-js #work .card {
     #work .card--hue { background-image: url("../HUE_thumb.webp"); }
     #work .card--tres { background-image: url("../tres_thumb.webp"); }
     #work .card--theladder { background-image: url("../theladder_thumb.webp"); }
-    #work .card--opalina { background-image: url("../Opalina_thumb.webp"); }
+    #work .card--opalina { background-image: none; }
     #work .card--peteshead:hover,
     #work .card--peteshead:focus-visible {
       background-image: url("../peteshead_thumb_hover.webp");
@@ -240,6 +249,10 @@ html.no-js #work .card {
     #work .card--opalina:hover,
     #work .card--opalina:focus-visible {
       background-image: url("../Opalina_thumb_hover.webp");
+    }
+    #work .card--opalina:hover .card__media,
+    #work .card--opalina:focus-visible .card__media {
+      opacity: 0;
     }
     @media (max-width: 700px) {
       #work .grid {
