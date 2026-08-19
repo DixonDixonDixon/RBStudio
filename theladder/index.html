@@ -73,15 +73,47 @@
 
         .site-header__back {
             color: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
             text-decoration: none;
             text-transform: none;
-            font-size: 1.5rem;
             line-height: 1;
+            transition: color 160ms ease;
+        }
+
+        .site-header__back-arrow {
+            font-size: 1.5rem;
+        }
+
+        .site-header__back-label {
+            display: grid;
+        }
+
+        .site-header__project-name,
+        .site-header__back-label::after {
+            grid-area: 1 / 1;
+            transition: opacity 160ms ease;
+        }
+
+        .site-header__back-label::after {
+            content: "Back";
+            opacity: 0;
+        }
+
+        .site-header__back:hover .site-header__project-name,
+        .site-header__back:focus-visible .site-header__project-name {
+            opacity: 0;
+        }
+
+        .site-header__back:hover .site-header__back-label::after,
+        .site-header__back:focus-visible .site-header__back-label::after {
+            opacity: 1;
         }
 
         .site-header__back:focus-visible,
         .site-header__back:hover {
-            opacity: 0.7;
+            color: #88d1b3;
         }
 
         .project-feature,
@@ -249,8 +281,7 @@
 </head>
 <body>
     <header class="site-header">
-        <a class="site-header__back" href="../index.html#work" aria-label="Back to main site">&larr;</a>
-        <span>The Ladder</span>
+        <a class="site-header__back" href="../index.html#project-theladder" aria-label="Return to The Ladder project tile"><span class="site-header__back-arrow" aria-hidden="true">&larr;</span><span class="site-header__back-label"><span class="site-header__project-name">The Ladder</span></span></a>
     </header>
     <main class="project-page">
         <figure class="project-feature" id="project-feature"></figure>
