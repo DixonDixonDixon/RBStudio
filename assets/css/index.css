@@ -64,7 +64,7 @@
     /* Services section layout */
     #services {
       background: #fffef8;
-      color: #3f3f3f;
+      color: var(--ink);
       width: 100vw;
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
@@ -103,7 +103,7 @@
       margin: 0;
       max-width: 46ch;
       font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: #4a4a4a;
+      color: var(--ink);
     }
     .services__list {
       display: grid;
@@ -133,7 +133,7 @@
     .services__item-copy {
       margin: 0;
       font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-      color: #4a4a4a;
+      color: var(--ink);
       max-width: 46ch;
     }
     @media (max-width: 1024px) {
@@ -402,8 +402,8 @@ html.no-js #work .card {
     }
     :root{
       --bg:#fffef8;
-      --ink:#3f3f3f;
-      --muted:#4a4a4a;
+      --ink:#333333;
+      --muted:#333333;
       --accent:#88d1b3;   /* mint */
       --accent-2:#e7b46a; /* warm */
       --logo-hover:#f0737f;
@@ -746,7 +746,7 @@ html.no-js #work .card {
       padding:0;
       border:0;
       background:transparent;
-      color:#3f3f3f;
+      color:var(--ink);
       cursor:pointer;
     }
     .hero-pagination__dot::before{
@@ -1010,7 +1010,7 @@ html.no-js #work .card {
     }
     html{scroll-behavior:smooth; scroll-padding-top:clamp(72px, 16.2vw, 162px)}
     /* Toast */
-    #toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#fffef8; color:#3f3f3f; border:1px solid rgba(63,63,63,.2); box-shadow:var(--shadow); padding:10px 14px; border-radius:12px; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:320}
+    #toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#fffef8; color:var(--ink); border:1px solid rgba(63,63,63,.2); box-shadow:var(--shadow); padding:10px 14px; border-radius:12px; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:320}
     #toast.show{opacity:1}
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
