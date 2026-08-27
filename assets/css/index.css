@@ -230,6 +230,7 @@ html.no-js #work .card {
     #work .card--tres { background-image: url("../tres_thumb.webp"); }
     #work .card--theladder { background-image: url("../theladder_thumb.webp"); }
     #work .card--opalina { background-image: none; }
+    #work .card--nada { background-image: url("../Nada_thumb.webp"); }
     #work .card--peteshead:hover,
     #work .card--peteshead:focus-visible {
       background-image: url("../peteshead_thumb_hover.webp");
@@ -249,6 +250,9 @@ html.no-js #work .card {
     #work .card--opalina:hover,
     #work .card--opalina:focus-visible {
       background-image: url("../Opalina_thumb_hover.webp");
+    }
+    #work .card--nada:hover {
+      background-image: url("../Nada_thumb_hover.webp");
     }
     #work .card--opalina:hover .card__media,
     #work .card--opalina:focus-visible .card__media {
@@ -300,12 +304,19 @@ html.no-js #work .card {
 #work .grid > a.card:focus-visible {
   background-position: center 54%;
 }
+#work .grid > a.card:focus {
+  outline: none;
+}
 #work .grid > a.card:hover::after,
 #work .grid > a.card:focus-visible::after {
   opacity: 1;
 }
 #work .grid > a.card:hover .card__cta,
-#work .grid > a.card:focus-visible .card__cta {
+#work .grid > a.card:focus-visible .card__cta,
+#work .grid > .card--nada:hover .card__cta {
+  opacity: 1;
+}
+#work .grid > .card--nada:hover::after {
   opacity: 1;
 }
     #services,
