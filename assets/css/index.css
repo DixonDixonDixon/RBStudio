@@ -285,6 +285,9 @@ html.no-js #work .card {
     #work .grid > .card--placeholder {
       background-color: #e6e4e4;
     }
+    #work .grid > .card--placeholder[hidden] {
+      display: none;
+    }
     .placeholder__orbit {
       width: 52%;
       height: auto;
