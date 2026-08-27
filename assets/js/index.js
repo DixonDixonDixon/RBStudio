@@ -5,6 +5,16 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // ===== NARROW-SCREEN HERO COPY REVEAL =====
+  const narrowHeroScreen = window.matchMedia('(max-width: 640px)');
+  const revealNarrowHeroCopy = () => {
+    if (narrowHeroScreen.matches && window.scrollY > 0) {
+      body.classList.add('has-started-scrolling');
+    }
+  };
+  revealNarrowHeroCopy();
+  window.addEventListener('scroll', revealNarrowHeroCopy, { passive: true });
+
   // ===== WORK THUMBNAIL LOADING =====
   const workCards = document.querySelectorAll('#work .card:not(.card--placeholder)');
   workCards.forEach((card) => {

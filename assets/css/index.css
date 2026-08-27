@@ -972,7 +972,22 @@ html.no-js #work .card {
       .nav{min-height:64px; padding:10px 0}
       .wrap:not(.nav){padding-block:18px; padding-inline:var(--gutter-inline)}
       /* Type tuning for small screens */
-      .bg-band.is-ready .hero__text-wrap::before{opacity:1; transition-delay:1.2s}
+      .bg-band.is-ready .hero__text {
+        opacity: 0;
+        transform: translateY(20px);
+        transition-delay: 0s;
+      }
+      .bg-band.is-ready .hero__text-wrap::before {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+      body.has-started-scrolling .bg-band.is-ready .hero__text {
+        opacity: 1;
+        transform: none;
+      }
+      body.has-started-scrolling .bg-band.is-ready .hero__text-wrap::before {
+        opacity: 1;
+      }
       .hero h1{font-size:clamp(28px, 9.5vw, 44px); line-height:1.08; letter-spacing:-0.02em}
       .hero p{font-size:clamp(14px,4.2vw,18px); max-width:40ch}
       .btn{padding:10px 14px; font-size:0.95rem}
